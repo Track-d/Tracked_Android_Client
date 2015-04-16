@@ -1,0 +1,102 @@
+#nav {
+		background-color: #5C2965;
+		padding: 10px;
+		color: #D3D3D3;
+		font-size: 15px;
+		font-weight: .1em;
+	}
+
+	#logo {
+		width: 10%;
+	}
+
+	h4 {
+		color: #696969;
+		display:inline;
+		margin-right: 50px;
+	}
+		
+	#filter {
+		margin-left: 50px;
+	}
+
+	.sub-btn {
+		background-color: #5C2965;
+		border-radius: 0px;
+		border-color: #D3D3D3;
+		margin-right: 10px;
+	}
+
+	.reg-btn {
+		color: #5C2965;
+		margin-top: 30px;
+	}
+
+	label {
+		width: 200px; 
+		margin: 0 0 00 5px;
+		margin-right: 10px; 
+	}
+
+	span { 
+		display: block; 
+		margin: 0 0 0 -130px; 
+	}
+
+	input.form-control { 
+		width: 200px;
+		padding: 5px; 
+		border-radius: 0px;
+		height: 27px;
+	}
+
+	#filter-event {
+		color: #5C2965;
+		width: 100px;
+	}
+
+	#filter-place {
+		color: #5C2965;
+	}
+
+	.event-img {
+		width: 260px;
+		height: 150px; 
+		border: 0px;
+
+	}
+
+	.event-display {
+		border-color: #696969;
+		border-style: solid;
+		border-width: .1em;
+		margin-left: auto;
+		margin-right: auto;
+	}
+
+	.event-details {
+		color: #696969;
+		margin: 5px;
+	}
+
+	.title {
+		color: #5C2965;
+		font-weight: bold;
+	}
+
+	.host {
+		display: inline;
+		margin-left: 1px;
+		color: #D64857;
+		font-weight: bold;
+	}
+
+	.row {
+		margin-bottom: 20px;
+	}
+
+	@media screen and (min-width: 1300px) {
+    /* styles to apply on very narrow screens */
+    .event-display {
+    	display: block;
+    }

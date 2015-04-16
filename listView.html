@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+		
+
+<html>
+<head>
+	<title>Trackd Events</title>
+	<!-- Latest compiled and minified CSS -->
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
+
+	<!-- Optional theme -->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap-theme.min.css">
+
+	<!-- Latest compiled and minified JavaScript -->
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+	<script type="text/javascript">
+	// Origin: http://students.washington.edu;
+	// 	Access-Control-Allow-Origin: http://students.washington.edu;
+
+	
+		// $.getJSON( "trackd.json", function( data ) {
+		// 	alert("we're in");
+		// 	var items = [];
+		// 	$.each( data, function( key, val ) {
+		// 		alert(key);
+		// 		alert("val: " + value);
+		// 		items.push( "<li id='" + key + "'>" + val + "</li>" );
+		// 	});
+		// 	$( "<ul/>", {
+		// 		"class": "my-new-list",
+		// 		html: items.join( "" )
+		// 	}).appendTo( ".list" );
+		// });
+
+
+		$.ajax({
+		     url:"http://students.washington.edu/mxl/trackd.json",
+		     dataType: 'jsonp', // Notice! JSONP <-- P (lowercase)
+		     success:function(json){
+		         // do stuff with json (in this case an array)
+		         //alert("Success");
+		     },
+		     error:function(error){
+		         //alert("Error: " + error.toString());
+		     }      
+		});
+
+	</script>
+	<script type="text/javascript">
+		//alert("testing");
+		$( "<p>Test</p>" ).appendTo( ".inner" );
+	</script>
+	
+</head>
+<style type="text/css">
+	#nav {
+		background-color: #5C2965;
+		padding: 10px;
+		color: #D3D3D3;
+		font-size: 15px;
+		font-weight: .1em;
+	}
+
+	#logo {
+		width: 10%;
+	}
+
+	h4 {
+		color: #696969;
+		display:inline;
+		margin-right: 50px;
+	}
+		
+	#filter {
+		margin-left: 50px;
+	}
+
+	.sub-btn {
+		background-color: #5C2965;
+		border-radius: 0px;
+		border-color: #D3D3D3;
+		margin-right: 10px;
+	}
+
+	.reg-btn {
+		color: #5C2965;
+		margin-top: 30px;
+	}
+
+	label {
+		width: 200px; 
+		margin: 0 0 00 5px;
+		margin-right: 10px; 
+	}
+
+	span { 
+		display: block; 
+		margin: 0 0 0 -130px; 
+	}
+
+	input.form-control { 
+		width: 200px;
+		padding: 5px; 
+		border-radius: 0px;
+		height: 27px;
+	}
+
+	#filter-event {
+		color: #5C2965;
+		width: 100px;
+	}
+
+	#filter-place {
+		color: #5C2965;
+	}
+
+	.event-img {
+		width: 260px;
+		height: 150px; 
+		border: 0px;
+
+	}
+
+	.event-display {
+		border-color: #696969;
+		border-style: solid;
+		border-width: .1em;
+		margin-left: auto;
+		margin-right: auto;
+	}
+
+	.event-details {
+		color: #696969;
+		margin: 5px;
+	}
+
+	.title {
+		color: #5C2965;
+		font-weight: bold;
+	}
+
+	.host {
+		display: inline;
+		margin-left: 1px;
+		color: #D64857;
+		font-weight: bold;
+	}
+
+	.row {
+		margin-bottom: 20px;
+	}
+
+	@media screen and (min-width: 1300px) {
+    /* styles to apply on very narrow screens */
+    .event-display {
+    	display: block;
+    }
+}
+
+</style>
+<body>
+	<!-- Nav Bar -->
+	<nav class="navbar navbar-default">
+	  <div class="container-fluid" id="nav">
+	    <div class="navbar-header">
+	      <a class="navbar-brand" href="#">
+	        <img id="logo" alt="track'd" src="img/logo1.png">
+	      </a>
+	    </div>
+      <center>
+	      <div class"login">
+		      <form class="navbar-form navbar-right" role="search">
+	                <label>
+	                	<span>UW E-mail</span>
+		                <div class="form-group">
+		                    <input type="text" class="form-control" name="username" placeholder="">
+		                </div>
+	               </label>
+	                <label>
+	                	<span>Password</span>
+		                <div class="form-group">
+		                    <input type="text" class="form-control" name="password" placeholder="">
+
+		                </div>
+	                </label>
+	            <input type="submit" value="Login" class="sub-btn"/>
+	            <input type="submit" value="Sign Up" class="reg-btn"/>
+		      </form>
+	      </div>
+      </center>
+	  </div>
+	</nav>
+<!-- END Nav -->
+
+
+	<div class="row">
+		<div id="filter">	
+			<h4>Filter</h4>
+			<label id="filter-event"><input type="radio" name="optradio"> Event </label>
+			<label id="filter-place"><input type="radio" name="optradio"> Place </label></div>
+	
+	</div>
+	
+	<div class="container">
+		<div class="row">
+			<div class="col-md-3">
+				<div class="event-display">
+					<a href="#"><img class="event-img" src="img/act.jpg" alt="Asians Collaborating Together Conference"/></a>
+	  				<div class="event-details">
+		  				<h5 class="title">Asians Collaborating Together Conference</h5>
+		  				<p class="time">10-4pm</p>
+		  				<p class="place">ECC</p>
+		  				<p class="hosted-by">Hosted by: <span class="host">Asian Coalition for Equality</span></p>
+	  				</div>
+				</div>
+			</div>
+			<div class="col-md-3">
+				<div class="event-display">
+					<a href="#"><img class="event-img" src="img/act.jpg" alt="Asians Collaborating Together Conference"/></a>
+	  				<div class="event-details">
+		  				<h5 class="title">Asians Collaborating Together Conference</h5>
+		  				<p class="time">10-4pm</p>
+		  				<p class="place">ECC</p>
+		  				<p class="hosted-by">Hosted by: <span class="host">Asian Coalition for Equality</span></p>
+	  				</div>
+				</div>
+			</div>
+			<div class="col-md-3">
+				<div class="event-display">
+					<a href="#"><img class="event-img" src="img/act.jpg" alt="Asians Collaborating Together Conference"/></a>
+	  				<div class="event-details">
+		  				<h5 class="title">Asians Collaborating Together Conference</h5>
+		  				<p class="time">10-4pm</p>
+		  				<p class="place">ECC</p>
+		  				<p class="hosted-by">Hosted by: <span class="host">Asian Coalition for Equality</span></p>
+	  				</div>
+				</div>
+			</div>
+			<div class="col-md-3">
+				<div class="event-display">
+					<a href="#"><img class="event-img" src="img/act.jpg" alt="Asians Collaborating Together Conference"/></a>
+	  				<div class="event-details">
+		  				<h5 class="title">Asians Collaborating Together Conference</h5>
+		  				<p class="time">10-4pm</p>
+		  				<p class="place">ECC</p>
+		  				<p class="hosted-by">Hosted by: <span class="host">Asian Coalition for Equality</span></p>
+	  				</div>
+				</div>
+			</div>
+		</div>
+				<div class="row">
+			<div class="col-md-3">
+				<div class="event-display">
+					<a href="#"><img class="event-img" src="img/act.jpg" alt="Asians Collaborating Together Conference"/></a>
+	  				<div class="event-details">
+		  				<h5 class="title">Asians Collaborating Together Conference</h5>
+		  				<p class="time">10-4pm</p>
+		  				<p class="place">ECC</p>
+		  				<p class="hosted-by">Hosted by: <span class="host">Asian Coalition for Equality</span></p>
+	  				</div>
+				</div>
+			</div>
+			<div class="col-md-3">
+				<div class="event-display">
+					<a href="#"><img class="event-img" src="img/act.jpg" alt="Asians Collaborating Together Conference"/></a>
+	  				<div class="event-details">
+		  				<h5 class="title">Asians Collaborating Together Conference</h5>
+		  				<p class="time">10-4pm</p>
+		  				<p class="place">ECC</p>
+		  				<p class="hosted-by">Hosted by: <span class="host">Asian Coalition for Equality</span></p>
+	  				</div>
+				</div>
+			</div>
+			<div class="col-md-3">
+				<div class="event-display">
+					<a href="#"><img class="event-img" src="img/act.jpg" alt="Asians Collaborating Together Conference"/></a>
+	  				<div class="event-details">
+		  				<h5 class="title">Asians Collaborating Together Conference</h5>
+		  				<p class="time">10-4pm</p>
+		  				<p class="place">ECC</p>
+		  				<p class="hosted-by">Hosted by: <span class="host">Asian Coalition for Equality</span></p>
+	  				</div>
+				</div>
+			</div>
+			<div class="col-md-3">
+				<div class="event-display">
+					<a href="#"><img class="event-img" src="img/act.jpg" alt="Asians Collaborating Together Conference"/></a>
+	  				<div class="event-details">
+		  				<h5 class="title">Asians Collaborating Together Conference</h5>
+		  				<p class="time">10-4pm</p>
+		  				<p class="place">ECC</p>
+		  				<p class="hosted-by">Hosted by: <span class="host">Asian Coalition for Equality</span></p>
+	  				</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</body>
+</html>
