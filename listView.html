@@ -21,19 +21,19 @@
 	// 	Access-Control-Allow-Origin: http://students.washington.edu;
 
 	
-		$.getJSON( "trackd.json", function( data ) {
-			alert("we're in");
-			var items = [];
-			$.each( data, function( key, val ) {
-				alert(key);
-				alert("val: " + value);
-				items.push( "<li id='" + key + "'>" + val + "</li>" );
-			});
-			$( "<ul/>", {
-				"class": "my-new-list",
-				html: items.join( "" )
-			}).appendTo( ".list" );
-		});
+		// $.getJSON( "trackd.json", function( data ) {
+		// 	alert("we're in");
+		// 	var items = [];
+		// 	$.each( data, function( key, val ) {
+		// 		alert(key);
+		// 		alert("val: " + value);
+		// 		items.push( "<li id='" + key + "'>" + val + "</li>" );
+		// 	});
+		// 	$( "<ul/>", {
+		// 		"class": "my-new-list",
+		// 		html: items.join( "" )
+		// 	}).appendTo( ".list" );
+		// });
 
 
 		// $.ajax({
@@ -50,8 +50,8 @@
 
 	</script>
 	<script type="text/javascript">
-		//alert("testing");
-		$( "<p>Test</p>" ).appendTo( ".inner" );
+		// //alert("testing");
+		// $( "<p>Test</p>" ).appendTo( ".inner" );
 	</script>
 	
 </head>
