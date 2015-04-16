@@ -103,6 +103,11 @@ input.form-control {
 	border-color: red;
 }
 
+.map-btn {
+	color: #5C2965;
+	border-color: #5C2965;
+}
+
 
 @media screen and (min-width: 1300px) {
 /* styles to apply on very narrow screens */
