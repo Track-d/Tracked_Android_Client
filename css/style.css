@@ -10,6 +10,8 @@ form.navbar-form {
 	border-width: 0 !important;
 }
 
+
+
 #logo {
 	width: 10%;
 }
@@ -24,9 +26,16 @@ h4 {
 	margin-right: 50px;
 }
 
+.submission_form{
+     position:relative;
+     margin: 250px; 
+     float:center; 
+
+}
 .sidebar-nav {
 	list-style: none;
-	position: absolute;
+    position: absolute; 
+    clear: right; 
 	top: 71px;
 	width: 250px;
 	height: 100%;

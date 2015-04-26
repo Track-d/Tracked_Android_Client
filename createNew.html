@@ -34,40 +34,42 @@
 	        <img id="logo" alt="track'd" src="img/logo1.png">
 	      </a>
 	    </div>
-      <center>
-	      <div class"login">
-		      <form class="navbar-form navbar-right" role="search">
-	                <label>
-	                	<span>UW E-mail</span>
-		                <div class="form-group">
-		                    <input type="text" class="form-control" name="username" placeholder="">
-		                </div>
-	               </label>
-	                <label>
-	                	<span>Password</span>
-		                <div class="form-group">
-		                    <input type="text" class="form-control" name="password" placeholder="">
-
-		                </div>
-	                </label>
-	            <input type="submit" value="Login" class="sub-btn"/>
-	            <input type="submit" value="Sign Up" class="reg-btn"/>
-		      </form>
-	      </div>
-      </center>
 	  </div>
 	</nav>
 <!-- END Nav -->
 
-	<div class="row">
-		
-	
-	</div>
-	
-	<form >
-	<div id="filter">	
+     <!-- Left Side Bar -->
+        <div id="wrapper">
+            <div id="sidebar-wrapper">
+                <ul class="sidebar-nav">
+                    <li id="search-container">
+                        <div class="form-group">
+                            <input id="search" type="text" class="form-control" name="search" placeholder="Search by keyword">
+                            <input id="search-icon" type="image" src="img/search_icon.png">
+                        </div>
+                    </li>
+                    <li id="m-item-filter">	
+                        <div  id="m-filter">	
+                            <label class="m-filter" ><input type="radio" name="optradio"> Event </label>
+                            <label class="m-filter" ><input type="radio" name="optradio"> Place </label>
+                        </div>
+                    </li>
+                    <li><a id="m-item1" href="#">My Account</a></li>
+                    <li><a id="m-item2" href="#">Add New</a></li>
+                    <li><a id="m-item3" href="#">Manage Events</a></li>
+                    <li><a id="m-item4" href="#">Surprise Me!</a></li>
+                    <li><a id="m-item5" href="#">Support</a></li>
+                    <li><a id="m-item6" href="#">About</a></li>
+                </ul>
+            </div>
+
+	<div class="submission_form">
+			<div id="filter">	
 			<h4>Add New</h4>
 			<br>
+            
+            <form >
+            <div class="column">
 				Name:<br>
 				<input type="text" name="name" placeholder ="Name">
 				<br>
@@ -109,10 +111,12 @@
 			</div>
 			
 		</form>
-		<Button id = "cancel" type ="button" onclick ="location.href='http://trackd.info/listView.html'">Cancel</Button>
-		
-		 <!-- our own JavaScript files -->
-        <script src="js/newPost.js"></script>
+	
+	</div>
+
+	<Button id = "cancel" type ="button" onclick ="location.href='http://trackd.info/listView.html'">Cancel</Button>
+	<!-- our own JavaScript files -->
+    <script src="js/newPost.js"></script>
   </body>
 </html>
 
