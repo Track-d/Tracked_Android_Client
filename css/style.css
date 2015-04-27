@@ -32,10 +32,10 @@ h4 {
      float:center; 
 
 }
+
 .sidebar-nav {
 	list-style: none;
-    position: absolute; 
-    clear: right; 
+	position: absolute;
 	top: 71px;
 	width: 250px;
 	height: 100%;
@@ -164,6 +164,18 @@ li#search-container {
 	width: 100px;
 }
 
+<<<<<<< HEAD
+=======
+#org-contact-info {
+	margin-top: 10px;
+	color: #5C2965;
+}
+
+a.org-contact {
+	color: #5C2965;
+}
+
+>>>>>>> orgView
 h5 {
 	font-weight: bold;
 }
@@ -313,6 +325,8 @@ input.form-control {
 	border-width: .1em;
 	margin-left: auto;
 	margin-right: auto;
+	margin-top: 10px;
+	margin-bottom: 10px;
 }
 
 .event-details {
