@@ -366,6 +366,28 @@ input.form-control {
 	margin-left: 5px;
 }
 
+.form-control {
+	border: 1px solid;
+	border-color: #5C2965;
+	width: 30em !important;
+	height: 3em !important;
+	margin: 1em;
+}
+
+textarea {
+	rows: 10;
+}
+
+#repeat {
+	background-color: #FFFFFF;
+	color:  #E9793D;
+	padding: 10px;
+	font-size: 150%; 
+	height : 50px;
+	position: relative; 
+	border-style: solid;
+	border-color: #E9793D;
+}
 
 @media screen and (min-width: 1300px) {
 /* styles to apply on very narrow screens */
