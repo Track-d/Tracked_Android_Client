@@ -25,9 +25,7 @@
 		myApp.controller('EventsCtrlAjax', function ($scope, $http) {
 			$http.get('http://tracked-server-dev.elasticbeanstalk.com/events').
 		    success(function(data, status, headers, config) {
-			   	alert(data.events[0].event_name);
 			   	$scope.allEvents = data;
-			  
 		    }).
 		    error(function(data, status, headers, config) {
 	   
