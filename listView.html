@@ -26,6 +26,7 @@
 			$http.get('http://tracked-server-dev.elasticbeanstalk.com/events').
 		    success(function(data, status, headers, config) {
 			   	$scope.allEvents = data;
+			  
 		    }).
 		    error(function(data, status, headers, config) {
 	   
