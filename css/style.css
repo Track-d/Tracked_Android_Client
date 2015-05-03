@@ -389,7 +389,7 @@ textarea {
 	border-color: #E9793D;
 }
 
-/*About Page*/
+/*****************************************************About Page**********************************************************/
 #about-container {
 	position: absolute;
 	top: 15%;
@@ -430,6 +430,73 @@ textarea {
 	margin-right: 270px !important;
 	margin-bottom: 100px;
 }
+
+
+/*****************************************Support Page***************************************************************************/
+.support-bullets {
+ 	list-style: none;
+    margin-left: 0;
+    padding-left: 1em;
+    text-indent: -1em;
+}
+
+#support-form {
+	color: #9B375E !important;
+}
+
+#support-email {
+	padding: 10px;
+	border-color: #9B375E;
+	color: #9B375E;
+}
+
+/*Changing the text color of placeholder*/
+#support-email::-webkit-input-placeholder { /* WebKit browsers */
+    color:    #9B375E;
+}
+#support-email:-moz-placeholder { /* Mozilla Firefox 4 to 18 */
+   color:    #9B375E;
+   opacity:  1;
+}
+#support-email::-moz-placeholder { /* Mozilla Firefox 19+ */
+   color:    #9B375E;
+   opacity:  1;
+}
+#support-email:-ms-input-placeholder { /* Internet Explorer 10+ */
+   color:    #9B375E;
+}
+
+#support-comment {
+	margin-top: 10px;
+	margin-bottom: 10px;
+	width: 600px;
+	border-color: #9B375E;
+	color: #9B375E;
+}
+
+/*Changing the text color of placeholder*/
+#support-comment::-webkit-input-placeholder { /* WebKit browsers */
+    color:    #9B375E;
+}
+#support-comment:-moz-placeholder { /* Mozilla Firefox 4 to 18 */
+   color:    #9B375E;
+   opacity:  1;
+}
+#support-comment::-moz-placeholder { /* Mozilla Firefox 19+ */
+   color:    #9B375E;
+   opacity:  1;
+}
+#support-comment:-ms-input-placeholder { /* Internet Explorer 10+ */
+   color:    #9B375E;
+}
+
+#support-btn {
+	background-color: #9B375E !important;
+	color: white;
+	border-radius: 0px;
+}
+
+
 
 @media screen and (min-width: 1300px) {
 /* styles to apply on very narrow screens */
