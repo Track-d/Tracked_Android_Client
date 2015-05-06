@@ -306,12 +306,16 @@ input.form-control {
 	
 }
 
-
+/***************************** Event List View *******************/
 .event-img {
-	width: 260px;
+	width: 200px;
 	height: 150px; 
 	border: 0px;
 
+}
+
+.event-container {
+	margin-left: 300px;
 }
 
 
@@ -356,7 +360,7 @@ input.form-control {
 	background-color: white;
 	position: fixed;
 	top: 95%;
-	left: 7.7%;
+	left: 20%;
 	width: 10%;
 	font-size: 18px;
 }
