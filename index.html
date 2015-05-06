@@ -1,13 +1,12 @@
-<!DOCTYPE html>
-<html>
-  <head>
-    <title>Track'd</title>
-	<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
-    <meta charset="utf-8">
-    
-	
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js" type="text/javascript"></script>
-    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDrfqu9Nw7UW-ZJGYvJqXP7Y3J2q1JDAkE"></script>
+
+<!doctype html>
+<html lang="en" id="ng-app" ng-app="myApp">
+<head>
+	<title>Trackd Events</title>
+		<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.15/angular.min.js"></script>
+	<!-- Latest compiled and minified CSS -->
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
 
 	<!-- Optional theme -->
@@ -15,16 +14,13 @@
 
 	<!-- Latest compiled and minified JavaScript -->
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
-	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.15/angular.min.js"></script>
-	<link rel="stylesheet" type="text/css" href="css/style.css">
-	<!--<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?v=3&sensor=true&callback=init"></script>-->
-	
-	 
-	 <!-- other page scripts -->
-      <link rel="import" href="common.html">
 
-  </head>
-  <body>
+	<link rel="stylesheet" type="text/css" href="css/style.css">
+	<script type="text/javascript" src="js/getAllEventDetails.js"></script>
+
+</head>
+
+<body ng-controller="MainControl">
 	<!-- Nav Bar -->
 	<nav class="navbar navbar-default">
 	  <div class="container-fluid" id="nav">
@@ -33,7 +29,7 @@
 	        <img id="logo" alt="track'd" src="img/logo1.png">
 	      </a>
 	    </div>
-      <center>
+      <!-- <center>
 	      <div class"login">
 		      <form class="navbar-form navbar-right" role="search">
 	                <label>
@@ -53,250 +49,61 @@
 	            <input type="submit" value="Sign Up" class="reg-btn"/>
 		      </form>
 	      </div>
-      </center>
+      </center> -->
 	  </div>
 	</nav>
 <!-- END Nav -->
-
-	<div class="row">
+<!-- Left Side Bar -->
+<div id="wrapper">
+    <div id="sidebar-wrapper">
+        <ul class="sidebar-nav">
+        	<li id="search-container">
+        		<div class="form-group">
+	            	<input id="search" type="text" class="form-control" name="search" placeholder="Search by keyword">
+	         		<input id="search-icon" type="image" src="img/search_icon.png">
+	        	</div>
+    		</li>
+        	<li id="m-item-filter">	
+				<div  id="m-filter">	
+					<label class="m-filter" ><input type="radio" name="optradio"> Event </label>
+					<label class="m-filter" ><input type="radio" name="optradio"> Place </label>
+				</div>
+			</li>
+            <li><a id="m-item1" href="#">My Account</a></li>
+            <li><a id="m-item2" href="createNew.html">Add New</a></li>
+            <li><a id="m-item3" href="#">Manage Events</a></li>
+            <li><a id="m-item4" href="#">Surprise Me!</a></li>
+            <li><a id="m-item5" href="support.html">Support</a></li>
+            <li><a id="m-item6" href="about.html">About</a></li>
+        </ul>
+    </div>
+    <!-- Left Side Bar ENDS -->
+	<div class="list"></div>
+	<!-- <div class="row">
 		<div id="filter">	
 			<h4>Filter</h4>
 			<label id="filter-event"><input type="radio" name="optradio"> Event </label>
 			<label id="filter-place"><input type="radio" name="optradio"> Place </label></div>
-	
 	</div>
-	
-	
-	
-	
-	
-      <script>
-// Note: This example requires that you consent to location sharing when
-// prompted by your browser. If you see a blank space instead of the map, this
-// is probably because you have denied permission for location sharing.
-//create a global variable namespace based on usgs.gov
-//this is how JavaScript developers keep global variables
-//separate from one another when mixing code from different
-//sources on the same page
-var map = map || {};
-//gov.usgs = gov.usgs || {};
-
-var initialLocation;
-var uw = new google.maps.LatLng(47.6561432, -122.3062688);
-
-function initialize() {
-  var mapOptions = {
-	scaleControl:true,
-    zoom: 15
-  };
-  map = new google.maps.Map($('.map-container')[0],
-      mapOptions);
-
-  // Try HTML5 geolocation
-  if(navigator.geolocation) {
-    navigator.geolocation.getCurrentPosition(function(position) {
-      var pos = new google.maps.LatLng(position.coords.latitude,
-                                       position.coords.longitude);
-
-      map.setCenter(uw);
-    }, function() {
-      handleNoGeolocation(true);
-    });
-  } else {
-    // Browser doesn't support Geolocation
-    handleNoGeolocation(false);
-  }
-}
-
-function handleNoGeolocation(errorFlag) {
-  if (errorFlag) {
-    var content = 'You denied geolocation!';
-  } else {
-    var content = 'Error: Your browser doesn\'t support geolocation.';
-  }
-
-  var options = {
-    map: map,
-    scaleControl:true,
-    zoom: 15,
-    content: content
-  };
-
-  var infowindow = new google.maps.InfoWindow(options);
-	map.setCenter(uw);
-}
-  google.maps.event.addDomListener(window, 'load', initialize);
-  google.maps.event.addDomListener(window, "resize", function() {
-	var center = map.getCenter();
-	google.maps.event.trigger(map, "resize");
-	map.setCenter(center); 
-});
-</script>
-
-
-<script>
-
-//url for events json
-var eventsUrl = 'http://tracked-server-dev.elasticbeanstalk.com/events'
-
-//current events dataset
-var displayEvents; 
-
-//AJAX Error event handler
-//just alerts the user of the error
-$(document).ajaxError(function(event, jqXHR, err){
-    alert('Problem obtaining data: ' + jqXHR.statusText);
-})
-
-//$(function(){
-//console.log("Should try to make connection 2");
-
-	//getEvents();
-
-
-//});
-
-window.onload = function getEvents() {
-console.log("try to get events"); 
-	 $.ajax({
-			type: 'GET',
-			dataType: 'json',
-			cache: false,
-            crossDomain: true,
-			async:false,
-			headers: {          
-             Accept : "application/json; charset=utf-8",         
-           
-			}, 
-			
-            url: eventsUrl,
-			success: function (data) {
-					console.log("success getting data");
-					console.log(data);
-					console.log(data.events.length);
-					console.log(data.events); 
-					//var obj = jQuery.parseJSON(events); // convert the received response to a JSON object
-					//var obj = JSON.stringify(events); 
-					parseEvents(data.events);
-			},
-			//jsonpCallback: "parseEvents",
-           // success: function(events){
-				//$('.message').html('Loading... <img src="img/loading.gif">');
-			//	displayEvents = events;
-			//	$('.message').html('Displaying ' + events.length + ' events'); 
-			//	addEventMarkers(events,map);
-			//	}, 
-            error: function (xhr, status, error) {
-              console.log("error");
-            }
-        });
-		
-	//$.getJSON(eventsUrl, 
-	//var infoWindow;
-	//var windowWidth = 
-	//var windowLength = 
-	//console.log(windowWidth);
-	//var myIcon = new google.maps.MarkerImage("img/marker30-01.png", null, null, null, new google.maps.Size(22,31));
-	//event.mapMarker = new google.maps.Marker({
-	//		map: map,
-	//		position: new google.maps.LatLng(47.655135, -122.314765),
-	//		icon: myIcon,
-			//src: 'img/marker30-01.png'
-			//scale: 20
-        //fillColor: "#F00",
-        //fillOpacity: 0.4,
-        //strokeWeight: 0.4
-			//	}
-	//		});
-	//		infoWindow = new google.maps.InfoWindow({
-	//		content: "ACT"
-	//		});
-	//		registerInfoWindow(map, event.mapMarker, infoWindow);
-	
-}
-
-function parseEvents(events){
-		
-		//if (events.Success) {
-			//alert(eventsObj.events.event_name);
-			
-			//displayEvents = jsonObj;
-				$('.message').html('Displaying ' +events.length + ' events'); 
-				addEventMarkers(events,map);
-		//} else {
-		//	console.log("damnit");
-		//	alert(events.details);
-		//}
-            
-				
-}
-function addEventMarkers(events, map) {
-
-	var event; //current event data
-	var idx;	//loop counter
-	var infoWindow; //InfoWindow for Event
-	
-	
-	for(idx = 0; idx < events.length; ++idx) {
-		e = events[idx];
-		console.log(idx);
-		var infoWindow;
-	//var windowWidth = 
-	//var windowLength = 
-	//console.log(windowWidth);
-	var myIcon = new google.maps.MarkerImage("img/marker30-01.png", null, null, null, new google.maps.Size(22,31));
-	
-		if(e.loc_info){
-			e.mapMarker = new google.maps.Marker({
-			map: map,
-			icon: myIcon,
-			position: new google.maps.LatLng(e.loc_info.lat, e.loc_info.log)
-			
-    
-			});
-			infoWindow = new google.maps.InfoWindow({
-			content: e.event_name
-			});
-			registerInfoWindow(map, e.mapMarker, infoWindow);
-		}
-	}
-}
-function registerInfoWindow(map, marker, infoWindow) {
-	var iw = infoWindow; 
-	//marker.setIcon('img/marker30-01.png'); 
-	
-	
-	//google.maps.event.addListener(marker, 'mouseover', function() {
-	// if(iw){
-	//	 iw.close; 
-	//	}
-	//	iw = infoWindow;
-	//	infoWindow.open(map, marker);
-		
-	//});
-
-	//google.maps.event.addListener(marker, 'mouseout', function() {
-    //console.log("hello")
-    //iw.close();
-	//});
-	 
-	 google.maps.event.addListener(marker, 'click', function(){
-		if(iw){
-		 iw.close; 
-		}
-		iw = infoWindow;
-		infoWindow.open(map, marker);
-	});
-}
-
- </script>
-
-   <div class ="map-container">
+ -->
+	<div class="event-container" id="ng-app" ng-app="myApp" ng-controller="EventsCtrlAjax">
+		<div class="row" >
+			<div class="col-md-3" ng-repeat="(key, val) in events">
+				<div class="event-display" >
+					<a href="#"><img class="event-img" src="img/act.jpg" alt="Asians Collaborating Together Conference"/></a>
+		  			 	<h5 class="title">{{val.e_name}}</h5>
+		  				<p class="day">{{val.e_sTime | date:'EEE, MMM dd, y'}}</p>
+		  				<p class="time">{{val.e_sTime | date:'shortTime'}} - {{val.e_eTime | date:'shortTime'}}</p>
+		  				<p class="place">{{val.loc_info.name}}</p>
+		  				<p class="hosted-by">Hosted by: <span class="host">Asian Coalition for Equality</span></p> 
+	  				</div>
+				</div>
+			</div>
 	</div>
-	<button id = "toListView"  onclick ="location.href='http://trackd.info/listView.html'">List View</button>
-		
-	
-	
-  </body>
+	<center><div id="no-event"><h4>No more to display</h4></div></center>
+
+	<form action="mapView.html">
+	<button type="submit" class="map-btn">Map View<img class="map-marker" src="img/marker30-01.png"></button></form>
+
+</body>
 </html>
-
