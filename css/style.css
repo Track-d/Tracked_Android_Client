@@ -32,16 +32,16 @@ h4 {
 	margin-right: 50px;
 }
 
-.submission_form{
+.submission_form {
      position:relative;
      margin: 250px; 
      float:center; 
 
 }
+
 .sidebar-nav {
 	list-style: none;
-    position: absolute; 
-    clear: right; 
+	position: absolute;
 	top: 71px;
 	width: 250px;
 	height: 100%;
@@ -170,6 +170,15 @@ li#search-container {
 	width: 100px;
 }
 
+#org-contact-info {
+	margin-top: 10px;
+	color: #5C2965;
+}
+
+a.org-contact {
+	color: #5C2965;
+}
+
 h5 {
 	font-weight: bold;
 }
@@ -206,10 +215,10 @@ span {
 }
 
 input.form-control { 
-	width: 200px;
-	padding: 5px; 
-	border-radius: 0px;
-	height: 27px;
+	width: 200px !important;
+	padding: 5px !important; 
+	border-radius: 0px !important;
+	height: 27px !important;
 }
 
 #filter-event {
@@ -302,16 +311,21 @@ input.form-control {
 	position: relative; 
 	float:center; 
     height: 600px;
-
-	
 	
 }
+
+/***************************** Event List View *******************/
 .event-img {
-	width: 260px;
+	width: 200px;
 	height: 150px; 
 	border: 0px;
 
 }
+
+.event-container {
+	margin-left: 300px;
+}
+
 
 .event-display {
 	border-color: #696969;
@@ -319,6 +333,8 @@ input.form-control {
 	border-width: .1em;
 	margin-left: auto;
 	margin-right: auto;
+	margin-top: 10px;
+	margin-bottom: 10px;
 }
 
 .event-details {
@@ -352,7 +368,7 @@ input.form-control {
 	background-color: white;
 	position: fixed;
 	top: 95%;
-	left: 7.7%;
+	left: 20%;
 	width: 10%;
 	font-size: 18px;
 }
@@ -361,6 +377,137 @@ input.form-control {
 	width: 15%;
 	margin-left: 5px;
 }*/
+
+.form-control {
+	border: 1px solid;
+	border-color: #5C2965;
+	width: 30em !important;
+	height: 3em !important;
+	margin: 1em;
+}
+
+textarea {
+	rows: 10;
+}
+
+#repeat {
+	background-color: #FFFFFF;
+	color:  #E9793D;
+	padding: 10px;
+	font-size: 150%; 
+	height : 50px;
+	position: relative; 
+	border-style: solid;
+	border-color: #E9793D;
+}
+
+/*****************************************************About Page**********************************************************/
+#about-container {
+	position: absolute;
+	top: 15%;
+	left: 25%;
+}
+
+#about-logo {
+	position: absolute;
+	top: 20%;
+	left: 25%;
+	width: 20%;
+}
+
+#about-text {
+	position: relative;
+	margin-top: 35%;
+	margin-left: 10%;
+	margin-right: 40%;
+	color: #575757;
+}
+
+#about-credits {
+	color: #575757;
+	text-align: center;
+	width: 350px;
+	margin-left: 230px;
+	margin-top: 100px;
+}
+
+.about-names {
+	color: #5C2965;
+	text-align: inline;
+	margin-right: 0px;
+}
+
+#about-copyrt {
+	margin-top: 30px !important;
+	margin-right: 270px !important;
+	margin-bottom: 100px;
+}
+
+
+/*****************************************Support Page***************************************************************************/
+.support-bullets {
+ 	list-style: none;
+    margin-left: 0;
+    padding-left: 1em;
+    text-indent: -1em;
+}
+
+#support-form {
+	color: #9B375E !important;
+}
+
+#support-email {
+	padding: 10px;
+	border-color: #9B375E;
+	color: #9B375E;
+}
+
+/*Changing the text color of placeholder*/
+#support-email::-webkit-input-placeholder { /* WebKit browsers */
+    color:    #9B375E;
+}
+#support-email:-moz-placeholder { /* Mozilla Firefox 4 to 18 */
+   color:    #9B375E;
+   opacity:  1;
+}
+#support-email::-moz-placeholder { /* Mozilla Firefox 19+ */
+   color:    #9B375E;
+   opacity:  1;
+}
+#support-email:-ms-input-placeholder { /* Internet Explorer 10+ */
+   color:    #9B375E;
+}
+
+#support-comment {
+	margin-top: 10px;
+	margin-bottom: 10px;
+	width: 600px;
+	border-color: #9B375E;
+	color: #9B375E;
+}
+
+/*Changing the text color of placeholder*/
+#support-comment::-webkit-input-placeholder { /* WebKit browsers */
+    color:    #9B375E;
+}
+#support-comment:-moz-placeholder { /* Mozilla Firefox 4 to 18 */
+   color:    #9B375E;
+   opacity:  1;
+}
+#support-comment::-moz-placeholder { /* Mozilla Firefox 19+ */
+   color:    #9B375E;
+   opacity:  1;
+}
+#support-comment:-ms-input-placeholder { /* Internet Explorer 10+ */
+   color:    #9B375E;
+}
+
+#support-btn {
+	background-color: #9B375E !important;
+	color: white;
+	border-radius: 0px;
+}
+
 
 
 @media screen and (min-width: 1300px) {

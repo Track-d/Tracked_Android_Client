@@ -30,7 +30,7 @@
 	<nav class="navbar navbar-default">
 	  <div class="container-fluid" id="nav">
 	    <div class="navbar-header">
-	      <a class="navbar-brand" href="#">
+	   	    <a class="navbar-brand" href="listView.html">
 	        <img id="logo" alt="track'd" src="img/logo1.png">
 	      </a>
 	    </div>
@@ -54,19 +54,64 @@
                             <label class="m-filter" ><input type="radio" name="optradio"> Place </label>
                         </div>
                     </li>
-                    <li><a id="m-item1" href="#">My Account</a></li>
-                    <li><a id="m-item2" href="#">Add New</a></li>
-                    <li><a id="m-item3" href="#">Manage Events</a></li>
-                    <li><a id="m-item4" href="#">Surprise Me!</a></li>
-                    <li><a id="m-item5" href="#">Support</a></li>
-                    <li><a id="m-item6" href="#">About</a></li>
+                      <li><a id="m-item1" href="#">My Account</a></li>
+		              <li><a id="m-item2" href="createNew.html">Add New</a></li>
+		              <li><a id="m-item3" href="#">Manage Events</a></li>
+		              <li><a id="m-item4" href="#">Surprise Me!</a></li>
+		              <li><a id="m-item5" href="support.html">Support</a></li>
+		              <li><a id="m-item6" href="about.html">About</a></li>
                 </ul>
             </div>
 
 	<div class="submission_form">
 			<div id="filter">	
 			<h4>Add New</h4>
-			<br>
+			<form class="form-inline">
+			  <div class="form-group">
+			    <label class="sr-only" for="exampleInputEmail3">Name</label>
+			    <input type="email" class="form-control" id="exampleInputEmail3" placeholder="Name">
+			  </div>
+			  <div class="form-group">
+			    <label class="sr-only" for="exampleInputPassword3">Facebook Export Link</label>
+			    <input type="password" class="form-control" id="exampleInputPassword3" placeholder="Facebook Export Link">
+			  </div>
+			  <label id="filter-event"><input type="radio" name="optradio"> Event </label>
+				<label id="filter-place"><input type="radio" name="optradio"> Place </label>
+				<div class="form-group">
+			    <label class="sr-only" for="exampleInputEmail3">Name</label>
+			    <input type="email" class="form-control" id="exampleInputEmail3" placeholder="Date">
+			  </div>
+			  <div class="form-group">
+			    <label class="sr-only" for="exampleInputPassword3">Facebook Export Link</label>
+			    <input type="password" class="form-control" id="exampleInputPassword3" placeholder="Time">
+			  </div>
+			  <textarea class="form-control" rows="100" placeholder="Description"></textarea>
+			   <div class="form-group">
+			    <label class="sr-only" for="exampleInputPassword3">Facebook Export Link</label>
+			    <input type="password" class="form-control" id="exampleInputPassword3" placeholder="Location">
+			  </div>
+			  	<button id = "repeat" type ="button" onclick ="addImage()">x Repeat</button>
+			  	<button id = "addImage" type ="button" onclick ="addImage()">+ Add Image</button>
+				<div id="week">	
+				<button type ="button" id="week-m" class ="btn-week" onclick="activateItem(this); return false;">Mon</button>
+				<button type ="button" id="week-t"class ="btn-week">Tue</button>
+				<button type ="button" id="week-w" class ="btn-week">Wed</button>
+				<button type ="button" id="week-th" class ="btn-week">Thur</button>
+				<button type ="button" id="week-f" class ="btn-week">Fri</button>
+				<button type ="button" id="week-s" class ="btn-week">Sat</button>
+				<button type ="button" id="week-su"class ="btn-week">Sun</button>
+				</div>
+				
+				<Button type="submit" id = "submit" formaction="delete.php" formmethod="POST">Post</Button>
+
+			  <div class="checkbox">
+			    <label>
+			      <input type="checkbox"> Remember me
+			    </label>
+			  </div>
+			  <button type="submit" class="btn btn-default">Sign in</button>
+			</form>
+			<!-- <br>
             
             <form >
             <div class="column">
@@ -110,7 +155,8 @@
 				<Button type="submit" id = "submit" formaction="delete.php" formmethod="POST">Post</Button>
 			</div>
 			
-		</form>
+		</form> -->
+
 	
 	</div>
 
