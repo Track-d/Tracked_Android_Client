@@ -15,27 +15,8 @@
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
 
 	<link rel="stylesheet" type="text/css" href="css/style.css">
-	<script>
-		var myApp = angular.module('myApp', []);
-		myApp.controller('MainControl', function ($scope, $http) {
-	     // any code here
+	<script type="text/javascript" src="js/getAllEventDetails.js"></script>
 
-	  	});
-
-		myApp.controller('EventsCtrlAjax', function ($scope, $http) {
-			$http.get('http://tracked-server-dev.elasticbeanstalk.com/events').
-		    success(function(data, status, headers, config) {
-			   	$scope.allEvents = data;
-			  
-		    }).
-		    error(function(data, status, headers, config) {
-	   
-	    	});
-		});
-	
-
-	
-	</script>
 </head>
 
 <body ng-controller="MainControl">
@@ -60,7 +41,6 @@
 	                	<span>Password</span>
 		                <div class="form-group">
 		                    <input type="text" class="form-control" name="password" placeholder="">
-
 		                </div>
 	                </label>
 	            <input type="submit" value="Login" class="sub-btn"/>
@@ -80,14 +60,14 @@
 	</div>
 
 	<div class="container" id="ng-app" ng-app="myApp" ng-controller="EventsCtrlAjax">
-		<div class="row" ng-repeat="(key, val) in allEvents">
-			<div class="col-md-3" ng-repeat="i in val">
+		<div class="row" >
+			<div class="col-md-3" ng-repeat="(key, val) in events">
 				<div class="event-display" >
 					<a href="#"><img class="event-img" src="img/act.jpg" alt="Asians Collaborating Together Conference"/></a>
-		  			 	<h5 class="title">{{i.event_name}}</h5>
-		  				<p class="day">{{i.event_date}}</p>
-		  				<p class="time">{{i.event_time}}</p>
-		  				<p class="place">{{i.loc_info.name}}</p>
+		  			 	<h5 class="title">{{val.e_name}}</h5>
+		  				<p class="day">{{val.e_sTime | date:'EEE, MMM dd, y'}}</p>
+		  				<p class="time">{{val.e_sTime | date:'shortTime'}} - {{val.e_eTime | date:'shortTime'}}</p>
+		  				<p class="place">{{val.loc_info.name}}</p>
 		  				<p class="hosted-by">Hosted by: <span class="host">Asian Coalition for Equality</span></p> 
 	  				</div>
 				</div>

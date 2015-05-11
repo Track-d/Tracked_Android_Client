@@ -5,10 +5,8 @@
 	  	});
 
 		// Model for all event objects
-	  	function evnt(name, sDay, eDay, sTime, eTime, loc_name, lat, longi, shortD, longD) {
+	  	function evnt(name, sTime, eTime, loc_name, lat, longi, shortD, longD) {
 	  		this.e_name = name;
-	  		this.e_sDay = sDay;
-	  		this.e_eDay = eDay;
 	  		this.e_sTime = sTime;
 	  		this.e_eTime = eTime;
 	  		this.e_loc_name = loc_name;
@@ -30,8 +28,6 @@
 			   			new evnt (
 				   			temp.event_name,
 				   			Date.parse(temp.start_time),
-				   			Date.parse(temp.start_time),
-				   			Date.parse(temp.end_time),
 				   			Date.parse(temp.end_time),
 				   			temp.loc_info.name,
 				   			temp.loc_info.lat,

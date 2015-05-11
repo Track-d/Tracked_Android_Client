@@ -1,0 +1,79 @@
+<html>
+<head>
+	<title>Support</title>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
+
+	<!-- Optional theme -->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap-theme.min.css">
+
+	<!-- Latest compiled and minified JavaScript -->
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.15/angular.min.js"></script>
+	<link rel="stylesheet" type="text/css" href="css/style.css">
+</head>
+<body>
+
+<!-- Nav Bar -->
+	<nav class="navbar navbar-default">
+	  <div class="container-fluid" id="nav">
+	    <div class="navbar-header">
+        <a class="navbar-brand" href="listView.html">
+	        <img id="logo-logged-in" alt="track'd" src="img/logo1.png">
+	      </a>
+	    </div>
+	  </div>
+	</nav>
+<!-- END Nav -->
+<!-- Left Side Bar -->
+<div id="wrapper">
+    <div id="sidebar-wrapper">
+        <ul class="sidebar-nav" id="left">
+        	<li id="search-container">
+        		<div class="form-group">
+	            	<input id="search" type="text" class="form-control" name="search" placeholder="Search by keyword">
+	         		<input id="search-icon" type="image" src="img/search_icon.png">
+	        	</div>
+    		</li>
+        	<li id="m-item-filter">	
+				<div  id="m-filter">	
+					<label class="m-filter" ><input type="radio" name="optradio"> Event </label>
+					<label class="m-filter" ><input type="radio" name="optradio"> Place </label>
+				</div>
+			</li>
+            <li><a id="m-item1" href="#">My Account</a></li>
+            <li><a id="m-item2" href="createNew.html">Add New</a></li>
+            <li><a id="m-item3" href="#">Manage Events</a></li>
+            <li><a id="m-item4" href="#">Surprise Me!</a></li>
+            <li><a id="m-item5" href="support.html">Support</a></li>
+            <li><a id="m-item6" href="about.html">About</a></li>
+        </ul>
+    </div>
+    <!-- Left Side Bar ENDS -->
+    <div id="page-content-wrapper">
+        <div class="page-content">
+            <div class="container" id="support-container">
+              Frequently Asked Questions
+              <ul class="support-bullets">
+                <li>+
+                </li>
+                 <li>+
+                </li>
+              </ul> 
+              <p>Have additional question or concerns?</p>
+              <p>Please let us know what you think about Track'd!</p>
+              <form id="support-form">
+                <input type="password" class="form-control" id="support-email" placeholder="E-mail">
+                <textarea class="form-control" rows="5" id="support-comment" placeholder="Comment"></textarea>
+                <button type="submit" class="btn" id="support-btn">Post</button>
+              </form>  
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+</body>
+</html>
