@@ -23,28 +23,21 @@
             $("#left_sidebar").load("left_sidebar.html"); 
         });
     </script>
+    <script type="text/javascript" src="js/getAllEventDetails.js"></script>
 
   </head>
-  <body>
-  	<div id="nav_bar"></div>
-  	<div id="left_sidebar"></div>
-	<div class="row">
-	<script type="text/javascript" src="js/getAllEventDetails.js"></script>
-
-</head>
-
 
 <body ng-controller="MainControl">
+	<div id="nav_bar"></div>
+  	<div id="left_sidebar"></div>
+	<div class="row">
+	
 	<div class="list"></div>
-	<!-- <div class="row">
->>>>>>> styling
 		<div id="filter">	
 			<h4>Filter</h4>
 			<label id="filter-event"><input type="radio" name="optradio"> Event </label>
 			<label id="filter-place"><input type="radio" name="optradio"> Place </label></div>
-
 	</div>
- -->
 	<div class="event-container" id="ng-app" ng-app="myApp" ng-controller="EventsCtrlAjax">
 		<div class="row" >
 			<div class="col-md-3" ng-repeat="(key, val) in events">
