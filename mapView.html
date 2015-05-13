@@ -351,22 +351,6 @@ function registerInfoWindow(map, marker, infoWindow) {
 				'min': 0,
 				'max': 1439
 				}
-		//slide: function( event, ui ) {
-			//$( "#amount" ).val( "$" + ui.values[ 0 ] + " - $" + ui.values[ 1 ] );	
-			//var val0 = ui.values[ 0 ];
-			//var	val1 =  ui.values[ 1 ]; 
-			//var	minutes0 = parseInt(val0 % 60, 10);
-			//var	hours0 = parseInt(val0 / 60 % 24, 10);
-			//var	minutes1 = parseInt(val1 % 60, 10);
-			//var	hours1 = parseInt(val1 / 60 % 24, 10);
-			//startTime = getTime(hours0, minutes0);
-			//endTime = getTime(hours1, minutes1);
-			//console.log(startTime);
-			//console.log(endTime);
-			//$("#time").text(startTime + ' - ' + endTime);
-			//clearAllMarkers();
-			//addEventMarkers(events, map, startTime,endTime);
-		 // }
 		}).on('slide', function(evt,val){
 			//$( "#amount" ).val( "$" + ui.values[ 0 ] + " - $" + ui.values[ 1 ] );	
 			var val0 =val[ 0 ];
@@ -383,15 +367,8 @@ function registerInfoWindow(map, marker, infoWindow) {
 			clearAllMarkers();
 			addEventMarkers(events, map, hours0,hours1);
 		});
-		//$( "#amount" ).val( "$" + $( "#slider" ).slider( "values", 0 ) +
-		//  " - $" + $( "#slider" ).slider( "values", 1 ) );
 	})( jQuery );
 	
-	// Reading/writing + validation from an input? One line.
-	//$('#range').Link('lower').to($('#value-input'));
-
-	// Write to a span? One line.
-	//$('#range').Link('upper').to($('#value-span'), 'html');
 	function getTime(hours, minutes) {
     var time = null;
     var minutes = minutes + "";
