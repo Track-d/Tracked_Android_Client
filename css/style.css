@@ -237,9 +237,9 @@ input.form-control {
 	padding: 10px;
 	font-size: 150%; 
 	height : 50px;
-	bottom: 20%;
+	bottom: 30%;
 	left: 2%;
-	float: bottom; 
+	float: center; 
 	position: fixed; 
    
 
@@ -508,36 +508,19 @@ textarea {
 	border-radius: 0px;
 }
 
-
-
-@media screen and (min-width: 1300px) {
-/* styles to apply on very narrow screens */
-.event-display {
-	display: block;
-}
-
 /* range slider on map view*/
 .time-slider {
-	background-color: white; 
-	height: 50px; 
-	padding-right: 10px; 
-	padding-left:10px;
+	padding-right:2%;
+	padding-left:2%;
 }
 
 #time {
 	font-size: 15px; 
-	float:center; 
-	margin-left: 0%; 
-	margin-bottom: 20px;
+	margin-left: 2%; 
+	margin-bottom: 2%;
 	
 }
 
-#slider{
-	float: center; 
-	height: 20px;
-	margin: 20px;
-    padding: 10px; 
-}
 
 /*#slider .ui-slider-handle {
      
@@ -546,30 +529,34 @@ textarea {
 	 
 }*/
 
-#slider .ui-state-default {
-	 border: 1px 
-	 solid #aaaaaa; 
-	  height: 30px; 
-	 background: #9B375E; 
+/*#slider .ui-state-default {
+	border: 1px;
+	border-radius: 50px;  
+	height: 30px; 
+	background-image:none;
+	background: #9B375E; 
  }
-
- #slider .ui-widget-header {
-	 border: 1px 
-	 solid #aaaaaa; 
+*/
+ #slider .noUi-connect {
+	 border: 1px;
 	 background: #5C2965;  
  }
-/*#slider .ui-slider-tick {
-    position: absolute;
-    width: 2px;
-    height: 16px;
-    z-index: -1;
+ 
+ #slider .noUi-handle { 
+	height: 30px;
+ 	border-radius: 10px;  
+	background: #9B375E;
+	float: center;  
+ }
+
+@media screen and (min-width: 1300px) {
+/* styles to apply on very narrow screens */
+	.event-display {
+		display: block;
+	}
 }
 
-#steps {
-	display:inline-block;
-	text-align:left;
-}
-.tick {
-	display: inline-block; 
-	text-align:left;
-}*/
+
+ 
+
+
