@@ -34,8 +34,8 @@ h4 {
 
 .submission_form {
      position:relative;
-     margin: 250px; 
-     float:center; 
+     margin-left: 250px; 
+	 padding-right: 20%; 
 
 }
 
@@ -49,6 +49,7 @@ h4 {
 	padding: 0;
 	background-color: #e7e4e7;
 	font-weight: bold;
+	clear:right; 
 }
 
 .sidebar-nav li {
@@ -309,8 +310,10 @@ input.form-control {
 
 .map-container {
 	position: relative; 
+	margin-left: .5%;
+	margin-right:.5%;
 	float:center; 
-    height: 600px;
+    height: 100%;
 	
 }
 

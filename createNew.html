@@ -20,7 +20,7 @@
 	<link rel="stylesheet" type="text/css" href="css/style.css">
 	<!--<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?v=3&sensor=true&callback=init"></script>-->
 	
-	 
+
 	 <!-- other page scripts -->
       <link rel="import" href="common.html">
 
@@ -102,7 +102,7 @@
 				<button type ="button" id="week-su"class ="btn-week">Sun</button>
 				</div>
 				
-				<Button type="submit" id = "submit" formaction=" http://tracked-server-dev.elasticbeanstalk.com/post_event" formmethod="POST">Post</Button>
+				<Button type="submit" id = "submit" onclick="submitForm()" >Post</Button>
 
 			  <div class="checkbox">
 			    <label>
@@ -156,7 +156,8 @@
 			</div>
 			
 		</form> -->
-
+		  <!-- our own JavaScript files -->
+        <script type="text/javascript" src="js/newPost.js"></script>
 	
 	</div>
 

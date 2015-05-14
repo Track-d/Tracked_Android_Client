@@ -85,7 +85,7 @@
 	<div class="row">
 		<div id="filter">	
 			<h4>Filter</h4>
-			<label id="filter-event"><input type="radio" name="optradio"> Event </label>
+			<label id="filter-event"><input type="radio" name="optradio" checked="checked"> Event </label>
 			<label id="filter-place"><input type="radio" name="optradio"> Place </label></div>
 	
 	</div>
@@ -116,19 +116,19 @@ function initialize() {
       mapOptions);
 
   // Try HTML5 geolocation
-  if(navigator.geolocation) {
-    navigator.geolocation.getCurrentPosition(function(position) {
-      var pos = new google.maps.LatLng(position.coords.latitude,
-                                       position.coords.longitude);
+ // if(navigator.geolocation) {
+  //  navigator.geolocation.getCurrentPosition(function(position) {
+  //    var pos = new google.maps.LatLng(position.coords.latitude,
+  //                                     position.coords.longitude);
 
       map.setCenter(uw);
-    }, function() {
-      handleNoGeolocation(true);
-    });
-  } else {
+  //  }, function() {
+  //    handleNoGeolocation(true);
+  //  });
+//  } else {
     // Browser doesn't support Geolocation
-    handleNoGeolocation(false);
-  }
+  //  handleNoGeolocation(false);
+ // }
 }
 
 function handleNoGeolocation(errorFlag) {
@@ -289,7 +289,9 @@ function addEventMarkers(events, map, startTime,endTime) {
 		
 				});
 				infoWindow = new google.maps.InfoWindow({
-				content: e.event_name
+				content: '<a href="http://trackd.info/eventView.html">'+
+					 e.event_name +'</a> </br><div id="shortDescr">'+
+					 e.event_desc_short +'</div>'
 				});
 				registerInfoWindow(map, e.mapMarker, infoWindow);
 				markersArray.push(e.mapMarker);
