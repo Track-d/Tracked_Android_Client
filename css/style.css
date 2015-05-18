@@ -18,13 +18,6 @@ p {
 	 font-weight: lighter;
 }
 
-button{
-	background-color:#5C2965 !important;
-	color: #FFF;
-	box-shadow: none;
-
-
-}
 #nav {
 	background-color: #5C2965;
 	padding: 10px;
@@ -38,7 +31,8 @@ form.navbar-form {
 }
 
 #logo {
-	width: 10%;
+	width: 20%;
+	margin-left: 1em;
 }
 
 #logo-logged-in {
