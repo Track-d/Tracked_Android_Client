@@ -49,7 +49,7 @@ h4 {
 .submission_form {
      position:relative;
      margin-left: 250px; 
-	 padding-right: 20%; 
+	 padding-right: 10%; 
 
 }
 
@@ -268,10 +268,10 @@ input.form-control {
 	padding: 10px;
 	font-size: 150%; 
 	height : 50px;
-	bottom: 2%;
-	right: 2%;
-	float: bottom; 
-	position: fixed; 
+	float:right; 
+	margin: 2%; 
+	position: relative; 
+	clear:right; 
 }
 
 
@@ -281,12 +281,12 @@ input.form-control {
 	padding: 10px;
 	font-size: 150%; 
 	height : 50px;
-	bottom: 2%;
-	right: 8%;
-	float: bottom; 
-	position: fixed; 
+	position: relative; 
+	float:right; 
 	border-style: solid;
 	border-color: #5C2965;
+	margin: 2%; 
+	
 }
 
 #addImage {
