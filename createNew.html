@@ -20,49 +20,18 @@
 	<link rel="stylesheet" type="text/css" href="css/style.css">
 	<!--<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?v=3&sensor=true&callback=init"></script>-->
 	
-	 
-	 <!-- other page scripts -->
-      <link rel="import" href="common.html">
+    <script> 
+        $(function(){
+            $("#nav_bar").load("nav.html"); 
+            $("#left_sidebar").load("left_sidebar.html"); 
+        });
+    </script>
 
   </head>
   <body>
-	<!-- Nav Bar -->
-	<nav class="navbar navbar-default">
-	  <div class="container-fluid" id="nav">
-	    <div class="navbar-header">
-	      <a class="navbar-brand" href="#">
-	        <img id="logo" alt="track'd" src="img/logo1.png">
-	      </a>
-	    </div>
-	  </div>
-	</nav>
-<!-- END Nav -->
 
-     <!-- Left Side Bar -->
-        <div id="wrapper">
-            <div id="sidebar-wrapper">
-                <ul class="sidebar-nav">
-                    <li id="search-container">
-                        <div class="form-group">
-                            <input id="search" type="text" class="form-control" name="search" placeholder="Search by keyword">
-                            <input id="search-icon" type="image" src="img/search_icon.png">
-                        </div>
-                    </li>
-                    <li id="m-item-filter">	
-                        <div  id="m-filter">	
-                            <label class="m-filter" ><input type="radio" name="optradio"> Event </label>
-                            <label class="m-filter" ><input type="radio" name="optradio"> Place </label>
-                        </div>
-                    </li>
-                    <li><a id="m-item1" href="#">My Account</a></li>
-                    <li><a id="m-item2" href="#">Add New</a></li>
-                    <li><a id="m-item3" href="#">Manage Events</a></li>
-                    <li><a id="m-item4" href="#">Surprise Me!</a></li>
-                    <li><a id="m-item5" href="#">Support</a></li>
-                    <li><a id="m-item6" href="#">About</a></li>
-                </ul>
-            </div>
-
+  	<div id="nav_bar"></div>
+  	<div id="left_sidebar"></div>
 	<div class="submission_form">
 			<div id="filter">	
 			<h4>Add New</h4>

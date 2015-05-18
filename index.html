@@ -21,43 +21,18 @@
 	
 	 
 	 <!-- other page scripts -->
-      <link rel="import" href="common.html">
+    <!--   <link rel="import" href="common.html"> -->
+
+    <script> 
+        $(function(){
+            $("#nav_bar").load("nav.html"); 
+            $("#left_sidebar").load("left_sidebar.html"); 
+        });
+    </script>
 
   </head>
   <body>
-	<!-- Nav Bar -->
-	<nav class="navbar navbar-default">
-	  <div class="container-fluid" id="nav">
-	    <div class="navbar-header">
-	      <a class="navbar-brand" href="#">
-	        <img id="logo" alt="track'd" src="img/logo1.png">
-	      </a>
-	    </div>
-      <center>
-	      <div class"login">
-		      <form class="navbar-form navbar-right" role="search">
-	                <label>
-	                	<span>UW E-mail</span>
-		                <div class="form-group">
-		                    <input type="text" class="form-control" name="username" placeholder="">
-		                </div>
-	               </label>
-	                <label>
-	                	<span>Password</span>
-		                <div class="form-group">
-		                    <input type="text" class="form-control" name="password" placeholder="">
-
-		                </div>
-	                </label>
-	            <input type="submit" value="Login" class="sub-btn"/>
-	            <input type="submit" value="Sign Up" class="reg-btn"/>
-		      </form>
-	      </div>
-      </center>
-	  </div>
-	</nav>
-<!-- END Nav -->
-
+  	<div id="nav_bar"></div>
 	<div class="row">
 		<div id="filter">	
 			<h4>Filter</h4>

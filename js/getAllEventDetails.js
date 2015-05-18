@@ -5,7 +5,8 @@
 	  	});
 
 		// Model for all event objects
-	  	function evnt(name, sTime, eTime, loc_name, lat, longi, shortD, longD) {
+	  	function evnt(id, name, sTime, eTime, loc_name, lat, longi, shortD, longD) {
+	  		this.e_id = id;
 	  		this.e_name = name;
 	  		this.e_sTime = sTime;
 	  		this.e_eTime = eTime;
@@ -16,16 +17,18 @@
 	  		this.e_longD = longD;
 	  	}
 
+	  	$scope.events = []
+
 		myApp.controller('EventsCtrlAjax', function ($scope, $http) {
 			$http.get('http://tracked-server-dev.elasticbeanstalk.com/events').
 		    success(function(data, status, headers, config) {
-			   	$scope.events = []
-
+			   
 			   	// load event objects into $scope.events
 			   	for(item in data.events) {
 			   		var temp = data.events[item];
 			   		$scope.events.push(
 			   			new evnt (
+			   				temp.id,
 				   			temp.event_name,
 				   			Date.parse(temp.start_time),
 				   			Date.parse(temp.end_time),
@@ -37,8 +40,22 @@
 			   			)
 		   			);			   		
 			   	}
+
+			   	$scope.getOneEvent = function(id){
+			   		for(item in $scope.events) {
+			   			$scope.item = null;
+			   			if (item.e_id == id) {
+			   				alert("id: " + id + " " + item);
+			   				return item;
+			   			}
+			   		}
+			   	}
 		    }).
 		    error(function(data, status, headers, config) {
 	   
 	    	});
+		});
+
+		myApp.controller('OneEvent', function ($scope, $http) {
+
 		});
