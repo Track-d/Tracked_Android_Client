@@ -17,6 +17,14 @@ p {
 
 	 font-weight: lighter;
 }
+
+button{
+	background-color:#5C2965 !important;
+	color: #FFF;
+	box-shadow: none;
+
+
+}
 #nav {
 	background-color: #5C2965;
 	padding: 10px;
@@ -581,9 +589,18 @@ textarea {
 	padding: 2em;
 }
 
-#right-sidebar p {
+#right-sidebar p{
 	padding: 1em;
 }
+
+#right-sidebar button{
+	margin: 1em;
+	float:right;
+	background-color:#5C2965 !important;
+	color: #FFF;
+	box-shadow: none;
+}
+
 
 
  
