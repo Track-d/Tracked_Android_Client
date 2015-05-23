@@ -49,7 +49,8 @@
 		myApp.controller('EventsCtrlAjax', function ($scope, $http, Data) {
 			$http.get('https://trackd.info/events').
 		    success(function(data, status, headers, config) {
-			   
+        		$scope.events = []
+	   
 			   	// load event objects into $scope.events
 			   	for(item in data.events) {
 			   		var temp = data.events[item];

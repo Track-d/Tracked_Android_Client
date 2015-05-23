@@ -1,6 +1,6 @@
 @font-face {
- font-family: 'Proxima Nova';
-  src: url("Font/ProximaNova");
+	font-family: 'Proxima Nova';
+ 	src: url("./Font/ProximaNova/ProximaNova-Light.otf");
 }
 html,body
 {
@@ -11,6 +11,20 @@ html,body
     padding: 0px;
     overflow-x: hidden; 
     font-weight: lighter;
+}
+
+div.login > form {
+	margin-top: 0.5em;
+	margin-bottom: 0.5em;
+}
+
+.navbar-brand > img{
+	height: 100%;
+}
+
+div.form-group {
+	margin-top: 10px;
+	display: block;
 }
 
 p {
