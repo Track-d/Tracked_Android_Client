@@ -20,7 +20,7 @@
 	  	$scope.events = []
 
 		myApp.controller('EventsCtrlAjax', function ($scope, $http) {
-			$http.get('http://tracked-server-dev.elasticbeanstalk.com/events').
+			$http.get('https://tracked-server-dev.elasticbeanstalk.com/events').
 		    success(function(data, status, headers, config) {
 			   
 			   	// load event objects into $scope.events
@@ -55,6 +55,7 @@
 	   
 	    	});
 		});
+
 
 		myApp.controller('OneEvent', function ($scope, $http) {
 
