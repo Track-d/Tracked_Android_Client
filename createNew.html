@@ -7,8 +7,9 @@
     
 	
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js" type="text/javascript"></script>
-    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDrfqu9Nw7UW-ZJGYvJqXP7Y3J2q1JDAkE"></script>
+    <!--<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDrfqu9Nw7UW-ZJGYvJqXP7Y3J2q1JDAkE"></script>-->
 	<script src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.9/jquery.validate.js"></script>
+	<script src="https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=false&libraries=places"></script>
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
 	
 	<!-- Optional theme -->
@@ -17,20 +18,17 @@
 	<!-- Latest compiled and minified JavaScript -->
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
 	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.15/angular.min.js"></script>
+	<!-- our own JavaScript files -->
+    <script src="js/newPost.js"></script>
+	<script src="js/searchLocation.js"></script>
 	<link rel="stylesheet" type="text/css" href="css/style.css">
 	<!--<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?v=3&sensor=true&callback=init"></script>-->
-
     <script> 
         $(function(){
             $("#nav_bar").load("nav.html"); 
             $("#left_sidebar").load("left_sidebar.html"); 
         });
     </script>
-
-  </head>
-  <body>
-
-
   </head>
   <body>
 	
@@ -62,7 +60,7 @@
 			    <input type="email" class="form-control" id="exampleInputEmail3" placeholder="Date">-->
 				<input  class="form-control" id="org_name" name="org_name" placeholder=" * Organization Name" > 
 				<div class="error_label"></div>
-				<input class="form-control" id="date" name="date" placeholder=" * Date: mm/dd/yy">
+				<input class="form-control" id="date" name="date" placeholder=" * Date: mm/dd/yyyy">
 				<div class="error_label"></div>
 			  </div>
 			  <div class="form-group">
@@ -70,11 +68,16 @@
 			    <input type="password" class="form-control" id="exampleInputPassword3" placeholder="Time">-->
 				<input class="form-control" id="s_time" name="s_time" placeholder=" * Start Time: hh:mmAM/PM">
 				<div class="error_label"></div>
-				<input class="form-control" id="e_time" name="e_time" placeholder="End Time: hh:mmAM/PM">
+				<input class="form-control" id="e_time" name="e_time" placeholder="* End Time: hh:mmAM/PM">
 				<div class="error_label"></div>
-				<input type="password" class="form-control" id="location" name="location" placeholder=" * Location: room,building">
+				
+			</div>
+			</br>
+			<div class="form-group">
+				<input class="form-control" type="text" id="room" name="room" placeholder="room #"></input>
+				<input class="form-control"type="text" id="location" name="location" placeholder=" * Location "></input>		
 				<div class="error_label"></div>
-			  </div>
+			</div>
 			  <textarea class="form-control" rows="5" name="sDescr" placeholder="Tagline: (5-10 words)"></textarea>
 			  <div class="error_label"></div>
 			  <textarea class="form-control" rows="100" name="longDescr" placeholder=" * Long Description"></textarea>
@@ -96,72 +99,16 @@
 						<button type ="button" id="week-su"class ="btn-week">Sun</button>
 					</div>
 				</div>-->
+				<input type="hidden" id="lat" name="lat" />
+				<input type="hidden" id="long" name="long" />
 				</br>	
-				<Button type="submit" id="submit" onclick="validateForm();" action="#">Post</Button>
+				<Button type="submit" id="submit" name ="submit" onclick="submitForm();">Post</Button>
 				<Button id = "cancel" type ="button" onclick ="location.href='http://trackd.info/index.html'">Cancel</Button>
 
 			
-			</form>
-			
-			<!--  <div class="checkbox">
-			    <label>
-			      <input type="checkbox"> Remember me
-			    </label>
-			  </div>
-			  <button type="submit" class="btn btn-default">Sign in</button>-->
-			<!-- <br>
-            
-            <form >
-            <div class="column">
-				Name:<br>
-				<input type="text" name="name" placeholder ="Name">
-				<br>
-				<label id="filter-event"><input type="radio" name="optradio"> Event </label>
-				<label id="filter-place"><input type="radio" name="optradio"> Place </label>
-				<br>
-				Description:<br>
-				<input type="text" name="description" placeholder ="Description">
-				<br>
-				Host:<br>
-				<input type="text" name="host" placeholder ="Host">
-				<br>
-				Date:<br>
-				<input type="text" name="date" placeholder ="Date">
-				<br>
-				Time:<br>
-				<input type="text" name="time" placeholder ="Time">
-				<br>
-				Location:<br>
-				<input type="text" name="location" placeholder ="Location">
-				<br>
-				Event Link:<br>
-				<input type="text" name="link" placeholder ="Export From Facebook (Event Link)">
-				<br>
-				<br>
-				
-				<button id = "addImage" type ="button" onclick ="addImage()">+ Add Image</button>
-				<div id="week">	
-				<button type ="button" id="week-m" class ="btn-week" onclick="activateItem(this); return false;">Mon</button>
-				<button type ="button" id="week-t"class ="btn-week">Tue</button>
-				<button type ="button" id="week-w" class ="btn-week">Wed</button>
-				<button type ="button" id="week-th" class ="btn-week">Thur</button>
-				<button type ="button" id="week-f" class ="btn-week">Fri</button>
-				<button type ="button" id="week-s" class ="btn-week">Sat</button>
-				<button type ="button" id="week-su"class ="btn-week">Sun</button>
-				</div>
-				
-				<Button type="submit" id = "submit" formaction="delete.php" formmethod="POST">Post</Button>
-			</div>
-			
-		</form> -->
-		  <!-- our own JavaScript files -->
-        <script type="text/javascript" src="js/newPost.js"></script>
-		
+			</form>		
 	</div>
 
-	
-	<!-- our own JavaScript files -->
-    <script src="js/newPost.js"></script>
   </body>
 </html>
 

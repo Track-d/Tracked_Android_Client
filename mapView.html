@@ -16,7 +16,7 @@
 	<!-- Optional theme -->
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap-theme.min.css">
   
-
+	<script src="http://google-maps-utility-library-v3.googlecode.com/svn/trunk/markerclusterer/src/markerclusterer_compiled.js"></script>
 	
 	
 	<!--jQuery UI Slider - Range slider</title>
@@ -101,6 +101,7 @@
 var map = map || {};
 //gov.usgs = gov.usgs || {};
 var markersArray = [];
+var markerCluster=[];
 var timeStartDefault= 8;
 var timeEndDefault =20;
 var events;
@@ -203,30 +204,7 @@ console.log("try to get events");
             error: function (xhr, status, error) {
               console.log("error");
             }
-        });
-		
-	//$.getJSON(eventsUrl, 
-	//var infoWindow;
-	//var windowWidth = 
-	//var windowLength = 
-	//console.log(windowWidth);
-	//var myIcon = new google.maps.MarkerImage("img/marker30-01.png", null, null, null, new google.maps.Size(22,31));
-	//event.mapMarker = new google.maps.Marker({
-	//		map: map,
-	//		position: new google.maps.LatLng(47.655135, -122.314765),
-	//		icon: myIcon,
-			//src: 'img/marker30-01.png'
-			//scale: 20
-        //fillColor: "#F00",
-        //fillOpacity: 0.4,
-        //strokeWeight: 0.4
-			//	}
-	//		});
-	//		infoWindow = new google.maps.InfoWindow({
-	//		content: "ACT"
-	//		});
-	//		registerInfoWindow(map, event.mapMarker, infoWindow);
-	
+        });	
 }
 
 function parseEvents(events){
@@ -247,7 +225,7 @@ function parseEvents(events){
 
 
 function addEventMarkers(events, map, startTime,endTime) {
-	
+	markersArray =[];
 	var event; //current event data
 	var idx;	//loop counter
 	var infoWindow; //InfoWindow for Event
@@ -292,6 +270,33 @@ function addEventMarkers(events, map, startTime,endTime) {
 		}
 		
 	}
+	
+	mcOptions = {styles: [{
+		height: 53,
+		url: "http://google-maps-utility-library-v3.googlecode.com/svn/trunk/markerclusterer/images/m1.png",
+		width: 53
+		},
+		{
+		height: 56,
+		url: "http://google-maps-utility-library-v3.googlecode.com/svn/trunk/markerclusterer/images/m2.png",
+		width: 56
+		},
+		{
+		height: 66,
+		url: "http://google-maps-utility-library-v3.googlecode.com/svn/trunk/markerclusterer/images/m3.png",
+		width: 66
+		},
+		{
+		height: 78,
+		url: "http://google-maps-utility-library-v3.googlecode.com/svn/trunk/markerclusterer/images/m4.png",
+		width: 78
+		},
+		{
+		height: 90,
+		url: "http://google-maps-utility-library-v3.googlecode.com/svn/trunk/markerclusterer/images/m5.png",
+		width: 90
+		}]}
+	 markerCluster = new MarkerClusterer(map, markersArray,mcOptions);
 }
 
 function clearAllMarkers(){
@@ -299,11 +304,10 @@ function clearAllMarkers(){
     markersArray[i].setMap(null);
 	}
 	markersArray.length = 0;
+	markerCluster.resetViewport();
 }
 function registerInfoWindow(map, marker, infoWindow) {
 	var iw = infoWindow; 
-	//marker.setIcon('img/marker30-01.png'); 
-	
 	
 	//google.maps.event.addListener(marker, 'mouseover', function() {
 	// if(iw){
