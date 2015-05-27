@@ -37,9 +37,9 @@
 	<div class="submission_form">
 			<div id="filter">	
 			<h4>Add New</h4>
-			<form class="form-inline" id = "subForm" action="#">
+			<form class="form-inline" id = "subForm">
 			  <div class="form-group">
-			    <input  class="form-control" id="name" placeholder=" * Name" name="name" > 
+			    <input  class="form-control" id="name" placeholder=" * Name" name="event_name" > 
 				<div class="error_label"></div>
 				<!-- <label class="sr-only" for="exampleInputEmail3">Name</label>
 			    <input type="email" class="form-control" id="exampleInputEmail3" placeholder="Name">-->
@@ -78,9 +78,9 @@
 				<input class="form-control"type="text" id="location" name="location" placeholder=" * Location "></input>		
 				<div class="error_label"></div>
 			</div>
-			  <textarea class="form-control" rows="5" name="sDescr" placeholder="Tagline: (5-10 words)"></textarea>
+			  <textarea class="form-control" rows="5" name="event_desc_short" placeholder="Tagline: (5-10 words)"></textarea>
 			  <div class="error_label"></div>
-			  <textarea class="form-control" rows="100" name="longDescr" placeholder=" * Long Description"></textarea>
+			  <textarea class="form-control" rows="100" name="event_desc_long" placeholder=" * Long Description"></textarea>
 			  <div class="error_label"></div>
 			   <div class="form-group">
 			   <!-- <label class="sr-only" for="exampleInputPassword3">Facebook Export Link</label>
@@ -103,7 +103,7 @@
 				<input type="hidden" id="lat" name="lat" />
 				<input type="hidden" id="long" name="long" />
 				</br>	
-				<Button type="submit" id="submit" name ="submit" onclick="submitForm();">Post</Button>
+				<Button type="submit" id="submit" onclick="submitForm();">Post</Button>
 				<Button id = "cancel" type ="button" onclick ="location.href='http://trackd.info/index.html'">Cancel</Button>
 
 

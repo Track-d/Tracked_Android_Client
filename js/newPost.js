@@ -62,7 +62,7 @@ function validateForm() {
 		 errorElement: "div",
 		 wrapper: 'div',
 		 rules: {
-           "name": {
+           "event_name": {
                 required: true,
             },
 			"optradio":{
@@ -87,19 +87,19 @@ function validateForm() {
 		   "location": {
 			   required: true,
 		   },
-		   "sDescr": {
+		   "event_desc_short": {
 			   maxlength: 50,
 		   },
-		   "longDescr": {
+		   "event_desc_long": {
 			   required: true,
 			   maxlength: 1000
 		   }
          },
 		 messages :{
-			name : {
+			event_name : {
 				required : 'Enter name'
 			},
-			longDescr: {
+			event_desc_long: {
 				required : 'Enter description shorter than 1000 chars'
 			}
 		 },
@@ -142,21 +142,32 @@ $.validator.addMethod(
 
 function submitForm() {
 	if(validateForm()){
+		var postUrl= "http://tracked-server-dev.elasticbeanstalk.com/post_event";
 		var formData = $(subForm).serializeObject();
+		var obj = JSON.stringify(formData);
+		console.log(obj);
 		   $.ajax({
+			url: "http://tracked-server-dev.elasticbeanstalk.com/post_event",
            type: "POST",
-           url: "http://tracked-server-dev.elasticbeanstalk.com/post_event",
-           dataType: "jsonp",
+		   contentType: "application/json; charset=utf-8",
+		   data: obj,
+		   async: false,		   
+           cache: false,    //This will force requested pages not to be cached by the browser
            success: function (msg) {
-                   alert("Post worked");
+                  alert("Post worked"+ msg);
 				  console.log("Post worked");
+				 // location.reload();
+				 // window.location = "http://localhost:9006/TrackdClient/createNew.html";
            },
 		   error: function(request, status, error){
 			   console.log("Post did not work");
-				alert("Post did not work, "+status + error);
+				alert("Post did not work, "+ request +status + error);
+				
+				//window.location = "http://localhost:9006/TrackdClient/createNew.html";
 		   },
-           data: formData
+           
        });
+	   self.location = "http://localhost:9006/TrackdClient/createNew.html";
 		console.log(formData); 
 	}
 	
@@ -175,6 +186,7 @@ $.fn.serializeObject = function()
             o[this.name] = this.value || '';
         }
     });
+
 	console.log(o);
     return o;
 };
