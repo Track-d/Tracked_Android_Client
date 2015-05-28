@@ -1,7 +1,36 @@
 		var myApp = angular.module('myApp', []);
-		myApp.controller('MainControl', function ($scope, $http) {
-	     // any code here
+		// myApp.factory('Data', function(){
+		// 	var savedData = null;
+		// 	function set(data) {
+		// 		savedData = data;
+		// 	}
 
+		// 	function get() {
+		// 			return savedData;
+		// 	}
+
+		// 	return {
+		// 		set: set,
+		// 		get: get
+		// 	}
+		// });
+
+		myApp.factory('Data', function () {
+
+		    var data = "hi";
+
+		    return {
+		        get: function () {
+		            return data;
+		        },
+		        set: function (evt) {
+		            this.data = evt;
+		        }
+		    };
+		});
+
+		myApp.controller('MainControl', function ($scope, $http, Data) {
+	  		$scope.events = []
 	  	});
 
 		// Model for all event objects
@@ -17,10 +46,8 @@
 	  		this.e_longD = longD;
 	  	}
 
-	  	$scope.events = []
-
-		myApp.controller('EventsCtrlAjax', function ($scope, $http) {
-			$http.get('https://tracked-server-dev.elasticbeanstalk.com/events').
+		myApp.controller('EventsCtrlAjax', function ($scope, $http, Data) {
+			$http.get('http://tracked-server-dev.elasticbeanstalk.com/events').
 		    success(function(data, status, headers, config) {
 			   
 			   	// load event objects into $scope.events
@@ -28,7 +55,7 @@
 			   		var temp = data.events[item];
 			   		$scope.events.push(
 			   			new evnt (
-			   				temp.id,
+			   				temp.event_id,
 				   			temp.event_name,
 				   			Date.parse(temp.start_time),
 				   			Date.parse(temp.end_time),
@@ -40,13 +67,16 @@
 			   			)
 		   			);			   		
 			   	}
-
 			   	$scope.getOneEvent = function(id){
-			   		for(item in $scope.events) {
-			   			$scope.item = null;
-			   			if (item.e_id == id) {
-			   				alert("id: " + id + " " + item);
-			   				return item;
+			   		for(var i = 0; i < $scope.events.length; i++) {
+			   			try {
+				   			if ($scope.events[i].e_id == id) {
+				   				Data.set($scope.events[i].e_name);
+				   				$scope.item = $scope.events[i].e_name;
+				   				alert("listView: " + Data.data);
+				   			}
+			   			} catch (error) {
+			   				alert(error);
 			   			}
 			   		}
 			   	}
@@ -56,7 +86,7 @@
 	    	});
 		});
 
-
-		myApp.controller('OneEvent', function ($scope, $http) {
-
+		myApp.controller('OneEvent', function ($scope, Data) {
+			$scope.item = $scope.events[0].e_name;
+			alert("eventView: " + $scope.item);
 		});
