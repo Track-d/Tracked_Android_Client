@@ -173,7 +173,7 @@ window.onload = function getEvents() {
 console.log("try to get events"); 
 	 $.ajax({
 			type: 'GET',
-			dataType: 'json',
+			url: eventsUrl,
 			cache: false,
             crossDomain: true,
 			async:false,
@@ -181,8 +181,6 @@ console.log("try to get events");
              Accept : "application/json; charset=utf-8",         
            
 			}, 
-			
-            url: eventsUrl,
 			success: function (data) {
 					console.log("success getting data");
 					console.log(data);
