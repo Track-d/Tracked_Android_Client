@@ -158,7 +158,7 @@ function handleNoGeolocation(errorFlag) {
 
 
 //url for events json
-var eventsUrl = 'https://tracked-server-dev.elasticbeanstalk.com/events'
+var eventsUrl = 'https://tracked.info/events'
 
 //current events dataset
 var displayEvents; 
@@ -259,7 +259,7 @@ function addEventMarkers(events, map, startTime,endTime) {
 		
 				});
 				infoWindow = new google.maps.InfoWindow({
-				content: '<a href="http://trackd.info/eventView.html">'+
+				content: '<a href="https://trackd.info/eventView.html">'+
 					 e.event_name +'</a></br><div id="shortDescr">'+
 					 e.event_desc_short +'</div>'
 				});
@@ -392,7 +392,7 @@ function registerInfoWindow(map, marker, infoWindow) {
  </script>
    <div class ="map-container">
 	</div>
-	<button id = "toListView"  onclick ="location.href='http://trackd.info/index.html'">List View</button>
+	<button id = "toListView"  onclick ="location.href='https://trackd.info/index.html'">List View</button>
 	<div class = "time-slider">
 		</br>
 		<div id="slider"></div>

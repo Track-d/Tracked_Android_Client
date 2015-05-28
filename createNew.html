@@ -52,8 +52,8 @@
 			    <input type="password" class="form-control" id="exampleInputPassword3" placeholder="Facebook Export Link">-->
 			  </div>
 			  <div class = "container">
-			  <label id="filter-event"><input type="radio" name="optradio"> Event </label>
-				<label id="filter-place"><input type="radio" name="optradio"> Place </label>
+			  <label id="filter-event"><input id="event" type="radio" name="optradio" checked="checked" onclick="selectEvent()"> Event </label>
+				<label id="filter-place"><input id="place" type="radio" name="optradio" onclick="selectPlace()"> Place </label>
 				</div>
 				<div class="error_label"></div>
 				<div class="form-group">
@@ -67,9 +67,9 @@
 			  <div class="form-group">
 			   <!-- <label class="sr-only" for="exampleInputPassword3">Facebook Export Link</label>
 			    <input type="password" class="form-control" id="exampleInputPassword3" placeholder="Time">-->
-				<input class="form-control" id="s_time" name="s_time" placeholder=" * Start Time: hh:mmAM/PM">
+				<input class="form-control" id="s_time" name="s_time" placeholder=" * Start Time: hh:mm AM/PM">
 				<div class="error_label"></div>
-				<input class="form-control" id="e_time" name="e_time" placeholder="* End Time: hh:mmAM/PM">
+				<input class="form-control" id="e_time" name="e_time" placeholder="* End Time: hh:mm AM/PM">
 				<div class="error_label"></div>
 				
 			</div>
@@ -79,9 +79,9 @@
 				<input class="form-control"type="text" id="location" name="location" placeholder=" * Location "></input>		
 				<div class="error_label"></div>
 			</div>
-			  <textarea class="form-control" rows="5" name="event_desc_short" placeholder="Tagline: (5-10 words)"></textarea>
+			  <textarea class="form-control" rows="5" id = "event_desc_short" name="event_desc_short" placeholder="Tagline: (5-10 words)"></textarea>
 			  <div class="error_label"></div>
-			  <textarea class="form-control" rows="100" name="event_desc_long" placeholder=" * Long Description"></textarea>
+			  <textarea class="form-control" rows="100" name="event_desc_long" placeholder=" * Description"></textarea>
 			  <div class="error_label"></div>
 			   <div class="form-group">
 			   <!-- <label class="sr-only" for="exampleInputPassword3">Facebook Export Link</label>
@@ -103,6 +103,8 @@
 				</div>-->
 				<input type="hidden" id="lat" name="lat" />
 				<input type="hidden" id="long" name="long" />
+				<input type="hidden" id="start_time" name="start_time" />
+				<input type="hidden" id="end_time" name="end_time" />
 				</br>	
 				<Button type="submit" id="submit" onclick="submitForm();">Post</Button>
 				<Button id = "cancel" type ="button" onclick ="location.href='http://trackd.info/index.html'">Cancel</Button>

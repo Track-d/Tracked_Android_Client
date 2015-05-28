@@ -459,7 +459,9 @@ input.form-control {
 	display: inline-block;
  }
 
-
+.error_label{
+	color: #e60000; 
+}
 
 /*textarea {
 	rows: 10;
