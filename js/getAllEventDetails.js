@@ -47,7 +47,7 @@
 	  	}
 
 		myApp.controller('EventsCtrlAjax', function ($scope, $http, Data) {
-			$http.get('http://tracked-server-dev.elasticbeanstalk.com/events').
+			$http.get('https://trackd.info/events').
 		    success(function(data, status, headers, config) {
 			   
 			   	// load event objects into $scope.events
