@@ -43,7 +43,8 @@
 		myApp.controller('EventsCtrlAjax', function ($scope, $http, OneEvt) {
 	 		$scope.events = []
 	 		//var JSON;
-			$http.get('https://trackd.info/events').
+	 		alert("hi");
+			$http.get('eventsUpdate.json').
 		     	success(function(data, status, headers, config) {
 		        for(item in data.events) {
 			   		var temp = data.events[item];
