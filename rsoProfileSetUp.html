@@ -3,6 +3,138 @@
 	<title>RSO Profile Builder</title>
 </head>
 <body>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+	<script type="text/javascript" src="js/jquery.bootstrap.wizard.min.js"></script>
+  	<script src="js/jquery-1.10.2.js"></script>
+  	<link rel="stylesheet" type="text/css" href="css/jquery-ui-1.11.4.css">
+  	<link rel="stylesheet" type="text/css" href="css/style.css">
+	    <!-- Use online (CDN) Bootstrap stylesheet-->
+	<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+	
+    <!-- Optional: Use online (CDN) Bootstrap theme -->
+	<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
 
-</body>
+   <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+   <style type="text/css">
+   	#rootwizard {
+   		margin-left: 250px;
+   	}
+   </style>
+
+	<script> 
+        $(function(){
+            $("#nav_bar").load("nav.html"); 
+            $("#left_sidebar").load("left_sidebar.html"); 
+        });
+    </script>
+
+
+</head>
+<body>
+	<div id="nav_bar"></div>
+  	<div id="left_sidebar"></div>
+	  <!-- Adjust site to work best on all screen sizes, including phones -->
+	  <div class="container-fluid">
+	  	<div id="rootwizard">
+	
+			<!-- 1. Create the tabs themselves  -->
+			<!-- data-toggle required. -->
+			<ul class="nav nav-tabs" role="tablist">
+			  <li><a href="#step1" role="tab" data-toggle="tab">Organization's Information</a></li>
+			  <li><a href="#step2" role="tab" data-toggle="tab">Email Verification</a></li>
+			  <li><a href="#step3" role="tab" data-toggle="tab">Finished</a></li>
+			</ul>
+ 
+			<!-- 2. Create progress bar -->
+			<!-- div class="progress" required. -->
+			<!-- on div id="progressBar" class="progress" required. -->
+			<div class="progress">
+				<div id="progressBar" class="progress-bar progress-bar-striped"  >
+					<div class="bar">
+						<span></span>
+					</div>
+				</div>
+			</div>
+ 
+			<!-- 3. Create a matching tab pane for each tab. Content goes within these panes -->
+			<div class="tab-content">
+				<div class="tab-pane active" id="step1">
+					<h1>Step 1: Organization Information</h1>
+					<p>You're making some progress</p>
+					<form id="support-form">
+						<input class="form-control" id="support-comment" placeholder="Organization's Full Name">
+						<input class="form-control" id="support-comment" placeholder="Organization's Acronym">
+		                <input type="password" class="form-control" id="support-email" placeholder="Organization's UW E-mail">
+	              </form>  
+				</div>
+				<div class="tab-pane" id="step2">
+					<h1>Step 2: Email Verification</h1>
+					<p>You're part way through</p>
+					<form id="profile-verification">
+						<input class="form-control" id="support-comment" placeholder="Verification Code Here">
+		                <button type="submit" class="btn" id="support-btn">Submit</button>
+	              	</form>  
+				</div>
+				<div class="tab-pane" id="step3">
+					<h1>Step 3: End</h1>
+					<p>You're Done!</p>
+				</div>
+ 
+			<!-- 4. Declare buttons used by the wizard. -->
+				<!-- "pager wizard" required. -->
+				<ul class="pager wizard">
+					<!-- These show as disabled on first tab. Add style="display:none;" to make the First button disappear when first tab.	  -->
+					<li class="first previous"><a href="#" accesskey="f">First</a></li>
+					<li class="previous"><a href="#" accesskey="p">Previous</a></li>
+					<li class="last" style="display:none;" ><a href="#">Done</a></li>
+					<li class="next"><a href="#" accesskey="n">Next</a></li>
+				</ul>	
+			</div><!-- ./tab-content -->			
+		</div><!-- ./rootwizard -->				
+	</div><!-- ./container-fluid -->
+	
+	
+	<!-- Get latest version of jQuery (necessary for Bootstrap's JavaScript plugins) -->
+	<!-- Currently jQuery should be loaded first. -->
+	<script src="http://code.jquery.com/jquery.js"></script>
+	
+	<!-- Use online (CDN) Bootstrap Javascript -->
+	<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+
+	  
+	<!-- 5. Thanks to https://github.com/VinceG/twitter-bootstrap-wizard -->
+	<script src="js/jquery.bootstrap.wizard.min.js"></script>
+	
+
+	  
+ 
+	<!-- Load javascript at bottom of the file to avoid delays loading other resources -->
+	  
+	<!-- 6. Javascript is required to switch panes. -->
+	<script>
+		$(document).ready(function() {
+  			$('#rootwizard').bootstrapWizard({onTabShow: function(tab, navigation, index) {
+  				// Dynamically change percentage completion on progress bar
+				var tabCount = navigation.find('li').length;
+				var current = index+1;
+				var percentDone = (current/tabCount) * 100;
+				$('#rootwizard').find('#progressBar').css({width:percentDone+'%'});
+ 
+				// Optional: Show Done button when on last tab; 
+				// It is invisible by default.
+				$('#rootwizard').find('.last').toggle(current >= tabCount);
+				
+				// Optional: Hide Next button if on last tab; 
+				// otherwise it shows but is disabled
+				$('#rootwizard').find('.next').toggle(current < tabCount);
+			}});
+		});	
+	</script>
+  </body>
 </html>

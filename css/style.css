@@ -1,6 +1,7 @@
 @font-face {
  font-family: 'Proxima Nova';
-  src: url("/Font/ProximaNova/ProximaNova-Light.otf");
+
+  src: url("./Font/ProximaNova/ProximaNova-Light.otf");
 }
 html,body
 {
@@ -625,5 +626,4 @@ textarea {
 	margin-top: .75em;
 }
  
-
 
