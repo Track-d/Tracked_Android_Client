@@ -1,33 +1,14 @@
 @font-face {
-<<<<<<< HEAD
  font-family: 'Proxima Nova';
-
-  src: url("../Font/ProximaNova/ProximaNova-Light.otf");
-
+  src: url("Font/ProximaNova/ProximaNova-Light.otf");
 }
 html,body
 {
 	font-family: 'Proxima Nova',Arial, Helvetica, sans-serif;
-    width: 100%;
-    height: 100%;
     margin: 0px;
     padding: 0px;
     overflow-x: hidden; 
     font-weight: lighter;
-}
-
-div.login > form {
-	margin-top: 0.5em;
-	margin-bottom: 0.5em;
-}
-
-.navbar-brand > img{
-	height: 100%;
-}
-
-div.form-group {
-	margin-top: 10px;
-	display: block;
 }
 
 p {
@@ -65,18 +46,18 @@ h4 {
 .submission_form {
      position:relative;
      margin-left: 250px; 
-	 padding-right: 10%; 
+	 padding-right: 20%; 
 
 }
 
 .sidebar-nav {
 	list-style: none;
 	position: absolute;
-	top: 71px;
 	width: 250px;
 	height: 100%;
 	margin: 0;
 	padding: 0;
+	margin-top: -1.5em;
 	background-color: #e7e4e7;
 	font-weight: bold;
 	clear:right; 
@@ -98,6 +79,11 @@ li#search-container {
 	vertical-align: 50%;
 	padding: 1em 0em 0em .5em;
 	border: none;
+
+}
+
+input#search {
+	margin: 0 0 0 1em;
 }
 
 #search {
@@ -176,11 +162,10 @@ li#search-container {
 }
 
 #right-sidebar {
-	top: 72px;
   	left: 1115px;
   	font-weight: normal;
   	margin: 4em;
- 	 margin-top: -.1em;
+ 	 margin-top: -1.5em;
 }
 
 #org-logo-container {
@@ -290,10 +275,10 @@ input.form-control {
 	padding: 10px;
 	font-size: 150%; 
 	height : 50px;
-	float:right; 
-	margin: 2%; 
-	position: relative; 
-	clear:right; 
+	bottom: 2%;
+	right: 2%;
+	float: bottom; 
+	position: fixed; 
 }
 
 
@@ -303,12 +288,12 @@ input.form-control {
 	padding: 10px;
 	font-size: 150%; 
 	height : 50px;
-	position: relative; 
-	float:right; 
+	bottom: 2%;
+	right: 8%;
+	float: bottom; 
+	position: fixed; 
 	border-style: solid;
 	border-color: #5C2965;
-	margin: 2%; 
-	
 }
 
 #addImage {
@@ -417,72 +402,17 @@ input.form-control {
 	width: 15%;
 	margin-left: 5px;
 }*/
-/***************************** New Submission *******************/
+
 .form-control {
-	border: 1px solid;
-	border-color: #5C2965;
-	width: 40em !important;
-	height: 4em !important;
-	margin: 1em;
-	
+	  border: 1px solid;
+  border-color: #5C2965;
+  width: 30em !important;
+  height: 3em !important;
 }
 
-#location {
-	width: 30em !important;
-	height: 3em !important;
-	
-}
-.pac-container{
-	position:relative; 
-	margin:0;
-	padding:0;
-	border:0; 
-}
-.pac-item {
-	height:4em; 
-	margin:0;
-	padding:5px;
-	border:0; 
-}
-
-.pac-icon{
-	height: 25px; 
-	float:center;
-	float:left;
-	clear:right; 
-	padding:0;
-	border:0; 
-	margin:0;
-	margin-right:3px; 	
-}
- .pac-item-query{
-	float:left;
-	padding:0;
-	border:0; 
-	margin:0;
-	margin-right:3px; 
-}
-.pac-matched{
-	border:0; 
-	padding:0; 	
-	margin:0;	 
-	float:left; 
-	clear:both;
-	
-}
-
-
- .pac-item-query, .pac-matched,.pac-icon{
-	display: inline-block;
- }
-
-.error_label{
-	color: #e60000; 
-}
-
-/*textarea {
+textarea {
 	rows: 10;
-}*/
+}
 
 #repeat {
 	background-color: #FFFFFF;
@@ -686,5 +616,99 @@ input.form-control {
 	margin-top: .75em;
 }
  
+/****** Submission *****/
 
+.form-control {
+	border: 1px solid;
+	border-color: #5C2965;
+	width: 40em !important;
+	height: 4em !important;
+	margin: 1em;
+	
+}
+
+#location {
+	width: 30em !important;
+	height: 3em !important;
+	
+}
+.pac-container{
+	position:relative; 
+	margin:0;
+	padding:0;
+	border:0; 
+}
+.pac-item {
+	height:4em; 
+	margin:0;
+	padding:5px;
+	border:0; 
+}
+
+.pac-icon{
+	height: 25px; 
+	float:center;
+	float:left;
+	clear:right; 
+	padding:0;
+	border:0; 
+	margin:0;
+	margin-right:3px; 	
+}
+ .pac-item-query{
+	float:left;
+	padding:0;
+	border:0; 
+	margin:0;
+	margin-right:3px; 
+}
+.pac-matched{
+	border:0; 
+	padding:0; 	
+	margin:0;	 
+	float:left; 
+	clear:both;
+	
+}
+
+
+ .pac-item-query, .pac-matched,.pac-icon{
+	display: 
+	inline-block;
+ }
+
+.error_label{
+	color: #e60000; 
+}
+
+/*textarea {
+	rows: 10;
+}*/
+
+#repeat {
+	background-color: #FFFFFF;
+	color:  #E9793D;
+	padding: 10px;
+	font-size: 150%; 
+	height : 50px;
+	position: relative; 
+	border-style: solid;
+	border-color: #E9793D;
+}
+
+input#org_name, input#name, input#fbLink, input#room, input#date, input#e_time, input#s_time {
+	height: 3em !important;
+}
+/****** End Submision *****/
+
+#nav-logo img{
+	width:20%;
+}
+
+.container {
+	padding-right: 15px;
+  padding-left: 15px;
+  /* margin-right: auto; */
+  margin-left: auto;
+}
 
