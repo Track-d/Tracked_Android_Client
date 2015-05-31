@@ -712,3 +712,7 @@ input#org_name, input#name, input#fbLink, input#room, input#date, input#e_time, 
   margin-left: 18.5em;
 }
 
+.container-fluid {
+	  padding-bottom: 10px;
+
+}
