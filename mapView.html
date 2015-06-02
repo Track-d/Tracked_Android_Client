@@ -49,7 +49,7 @@
 	 
 	 <!-- other page scripts -->
   </head>
-  <body ng-controller="OneEvent">
+  <body ng-app="myApp">
 	<!-- Nav Bar -->
 	<nav class="navbar navbar-default">
 	  <div class="container-fluid" id="nav">
@@ -281,7 +281,7 @@ function addEventMarkers(events, map, startTime,endTime) {
 		
 				});
 				infoWindow = new google.maps.InfoWindow({
-				content: '<a sref="oneEventMap" ng-click="getOneEvent(e.event_id);>'+
+				content: '<a sref="oneEventMap" ng-click="getOneEvent(e.event_id)";>'+
 					 e.event_name +'</a></br><div id="shortDescr">'+
 					 e.event_desc_short +'</div>'
 				});
@@ -386,7 +386,7 @@ function registerInfoWindow(map, marker, infoWindow) {
 	}
 	
  </script>
-   <div ng-app="myApp" ng-controller="OneEventMap" class="map-container">
+   <div  ng-controller="OneEventMap" class="map-container">
 	</div>
 	<button id = "toListView"  onclick ="location.href='http://trackd.info/index.html'">List View</button>
 	<div class = "time-slider">
