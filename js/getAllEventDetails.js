@@ -17,6 +17,13 @@
 				templateUrl: "template-eventView.html"
 			})
 		})
+		.config(function config($stateProvider) {
+			$stateProvider.state("oneEventMap", {
+				url: "/eventView",
+				controller: "OneEvent",           
+				templateUrl: "template-eventView.html"
+			})
+		})
 		.service("OneEvt", function OneEvt() {
 			var eventItem = this;
 			eventItem.item = "Default"
@@ -88,53 +95,15 @@
 		myApp.controller('OneEvent', function ($scope, OneEvt) {
 			// setting selected event
 			$scope.item = OneEvt.item;	
+			alert($scope.item);
 		});
 
 
-
-
-		// myApp.controller('EventsCtrlAjax', function ($scope, $http, OneEvt) {
-		// 	$scope.events = []
-		// 	$http.get('/events').
-		//     success(function(data, status, headers, config) {
-			   
-		// 	   	// load event objects into $scope.events
-		// 	   	for(item in data.events) {
-		// 	   		var temp = data.events[item];
-		// 	   		$scope.events.push(
-		// 	   			new evnt (
-		// 	   				temp.event_id,
-		// 		   			temp.event_name,
-		// 		   			Date.parse(temp.start_time),
-		// 		   			Date.parse(temp.end_time),
-		// 		   			temp.loc_info.name,
-		// 		   			temp.loc_info.lat,
-		// 		   			temp.loc_info.log,
-		// 		   			temp.event_desc_short,
-		// 		   			temp.event_desc_long
-		// 	   			)
-		//    			);			   		
-		// 	   	}
-		// 	   	var chosen = this;
-		// 	   	$scope.getOneEvent = function(id){
-		// 	   		for(var i = 0; i < $scope.events.length; i++) {
-		// 	   			try {
-		// 		   			if ($scope.events[i].e_id == id) {
-		// 		   				OneEvt.item = $scope.events[i];
-		// 		   			}
-		// 	   			} catch (error) {
-		// 	   				alert(error);
-		// 	   			}
-		// 	   		}
-		// 	   	}
-
-		// 	   	// console.log($scope.events);
-		// 	   	$scope.$apply();
-		// //     }).
-		//     error(function(data, status, headers, config) {
-	   
-	 //    	});
-		// });
+		myApp.controller('OneEventMap', function ($scope, OneEvt) {
+			// setting selected event
+			$scope.item = OneEvt.item;	
+			alert($scope.item);
+		});
 
 
 	
