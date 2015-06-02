@@ -109,11 +109,11 @@ input#search {
 }
 
 #search-icon {
-	width: 28px;
-	padding: 5px;
-	background-color: #5C2965;
-	margin-top: -28px;
-	margin-left: 205px;
+  width: 27px;
+  padding: 5px;
+  background-color: #5C2965;
+  margin-top: -68px;
+  margin-left: 195px;
 }
 
 #m-item-filter {
@@ -239,6 +239,7 @@ span {
 }
 
 input.form-control { 
+	display: inherit;
 	width: 200px !important;
 	padding: 5px !important; 
 	border-radius: 0px !important;
@@ -353,7 +354,7 @@ input.form-control {
 
 
 .event-display {
-	border-color: #696969;
+	border-color: #dbdbdb;
 	border-style: solid;
 	border-width: .1em;
 	margin-left: auto;
@@ -404,7 +405,7 @@ input.form-control {
 }*/
 
 .form-control {
-	  border: 1px solid;
+  border: 1px solid;
   border-color: #5C2965;
   width: 30em !important;
   height: 3em !important;
@@ -618,15 +619,6 @@ textarea {
  
 /****** Submission *****/
 
-.form-control {
-	border: 1px solid;
-	border-color: #5C2965;
-	width: 40em !important;
-	height: 4em !important;
-	margin: 1em;
-	
-}
-
 #location {
 	width: 30em !important;
 	height: 3em !important;
@@ -710,5 +702,16 @@ input#org_name, input#name, input#fbLink, input#room, input#date, input#e_time, 
   padding-left: 15px;
   /* margin-right: auto; */
   margin-left: 18.5em;
+}
+
+.container-fluid {
+	padding-bottom: 1em;
+}
+.event-display {
+	padding: 1em;
+}
+
+.form-group {
+   margin-bottom: 0px; 
 }
 
