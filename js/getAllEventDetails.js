@@ -42,16 +42,22 @@
 		myApp.controller('EventsCtrlAjax', function ($scope, $http, OneEvt) {
 	 		$scope.events = []
 	 		//var JSON;
-			$http.get('trackd.info/events').
+			$http.get('eventsUpdate.json').
 		     	success(function(data, status, headers, config) {
 		        for(item in data.events) {
 			   		var temp = data.events[item];
+					var now = new Date();
+			   		var start = new Date(new Date(temp.start_time).getTime() + (now.getTimezoneOffset()* 60000));
+					var now = new Date();
+			   		var end = new Date(new Date(temp.end_time).getTime() + (now.getTimezoneOffset()* 60000));
+
+	  				//alert("S: " + start + " E: " + end);
 			   		$scope.events.push(
 			   			new evnt (
 			   				temp.event_id,
 				   			temp.event_name,
-				   			Date.parse(temp.start_time),
-				   			Date.parse(temp.end_time),
+				   			Date.parse(start),
+				   			Date.parse(end),
 				   			temp.loc_info.location,
 				   			temp.loc_info.lat,
 				   			temp.loc_info.log,
