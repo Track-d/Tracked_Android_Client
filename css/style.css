@@ -2,6 +2,12 @@
  font-family: 'Proxima Nova';
   src: url("Font/ProximaNova/ProximaNova-Light.otf");
 }
+
+@font-face {
+ font-family: 'Proxima Nova Bold';
+  src: url("Font/ProximaNova/ProximaNova-Semibold.otf");
+}
+
 html,body
 {
 	font-family: 'Proxima Nova',Arial, Helvetica, sans-serif;
@@ -451,9 +457,10 @@ textarea {
 #about-credits {
 	color: #575757;
 	text-align: center;
-	width: 350px;
-	margin-left: 230px;
-	margin-top: 100px;
+	width: 450px;
+	margin: 0;
+	text-align: center;
+	margin: 2em 0 0 14em;
 }
 
 .about-names {
@@ -466,6 +473,22 @@ textarea {
 	margin-top: 30px !important;
 	margin-right: 270px !important;
 	margin-bottom: 100px;
+}
+
+@media screen and (max-width: 1200px) {
+/* styles to apply on very narrow screens */
+	.event-display {
+		display: block;
+	}
+
+	#about-credits {
+	color: #575757;
+	text-align: center;
+	width: 450px;
+	margin: 0;
+	text-align: center;
+	margin: 2em 0 0 7em;
+	}
 }
 
 
@@ -544,6 +567,10 @@ textarea {
 	margin-left: 2%; 
 	margin-bottom: 2%;
 	
+}
+
+#suport-container {
+	padding: 0;
 }
 
 
@@ -714,4 +741,35 @@ input#org_name, input#name, input#fbLink, input#room, input#date, input#e_time, 
 .form-group {
    margin-bottom: 0px; 
 }
+
+#about-container {
+  position: absolute;
+  top: 15%;
+  left: 25%;
+   margin-left: 0em !important;
+}
+
+#about-text {
+  position: relative;
+  margin-top: 25%;
+  margin-left: 10%;
+  margin-right: 40%;
+  color: #575757;
+}
+
+img#about-logo {
+  position: absolute;
+  top: 20%;
+  left: 25%;
+  width: 20%;
+  margin-top: -7em;
+
+
+}
+
+b{
+	font-family: 'Proxima Nova Bold',Arial, Helvetica, sans-serif;
+	color: #575757;
+}
+
 
