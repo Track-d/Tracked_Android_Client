@@ -30,7 +30,7 @@
 		});
 
 		// Model for all event objects
-	  	function evnt(id, name, sTime, eTime, loc_name, lat, longi, shortD, longD) {
+	  	function evnt(id, name, sTime, eTime, loc_name, lat, longi, shortD, longD, orgName) {
 	  		this.e_id = id;
 	  		this.e_name = name;
 	  		this.e_sTime = sTime;
@@ -40,6 +40,7 @@
 	  		this.e_log = longi;
 	  		this.e_shortD = shortD;
 	  		this.e_longD = longD;
+	  		this.org = orgName;
 	  	}
 
 		myApp.controller('MainControl', function ($scope, $http, OneEvt) {
@@ -49,7 +50,8 @@
 		myApp.controller('EventsCtrlAjax', function ($scope, $http, OneEvt) {
 	 		$scope.events = []
 	 		//var JSON;
-			$http.get('eventsUpdate.json').
+	 		//$http.get('eventsUpdate.json').
+			$http.get('https://trackd.info/events').
 		     	success(function(data, status, headers, config) {
 		        for(item in data.events) {
 			   		var temp = data.events[item];
@@ -69,10 +71,21 @@
 				   			temp.loc_info.lat,
 				   			temp.loc_info.log,
 				   			temp.event_desc_short,
-				   			temp.event_desc_long
+				   			temp.event_desc_long,
+				   			temp.org_name
 			   			)
 		   			);			   		
 			   	}
+
+			   	function chunk(arr, size) {
+				  var newArr = [];
+				  for (var i=0; i<arr.length; i+=size) {
+				    newArr.push(arr.slice(i, i+size));
+				  }
+				  return newArr;
+				}
+
+				$scope.chunkedData = chunk($scope.events, 4);
 
 			   	$scope.getOneEvent = function(id){
 			   		for(var i = 0; i < $scope.events.length; i++) {
@@ -87,15 +100,14 @@
 			   	}
 
 			   	// console.log($scope.events);
-			   	$scope.$apply();
-		 	});	   	
+			   	
+		 	});	  
 		 });
 
 
 		myApp.controller('OneEvent', function ($scope, OneEvt) {
 			// setting selected event
 			$scope.item = OneEvt.item;	
-			alert($scope.item);
 		});
 
 
