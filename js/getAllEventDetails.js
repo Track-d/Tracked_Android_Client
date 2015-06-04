@@ -41,8 +41,8 @@
 					console.log("in getdata");
 
 			 		//var JSON;
-			 		// var promise = $http({method: 'GET', url: 'eventsUpdate.json'})
-			 		var promise = $http({method: 'GET', url: 'https://trackd.info/events'})
+			 		var promise = $http({method: 'GET', url: 'eventsUpdate.json'})
+			 		//var promise = $http({method: 'GET', url: 'https://trackd.info/events'})
 				    	.success(function(data, status, headers, config) {
 				     		return data;
 					   	
@@ -244,9 +244,9 @@ function initialize() {
 
 //url for events json
 
-//var eventsUrl = 'eventsUpdate.json';
+var eventsUrl = 'eventsUpdate.json';
 
-var eventsUrl = "https://trackd.info/events_today"
+// var eventsUrl = "https://trackd.info/events_today"
 
 
 //current events dataset
