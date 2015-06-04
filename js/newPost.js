@@ -152,10 +152,10 @@ function submitForm() {
 		var s = new Date(d);
 		var e = new Date(document.getElementById("date").value.replace(/\//g, "-") + " " + document.getElementById("e_time").value);
 		
+		s.setHours(s.getHours() - s.getTimezoneOffset() / 60);
+		e.setHours(e.getHours() - e.getTimezoneOffset() / 60);	
 		document.getElementById('start_time').value = s.toJSON(); 
 		document.getElementById('end_time').value = e.toJSON(); 
-		console.log("start time should be: " + s);
-		console.log("end time should be: " + e);
 		var formData = $(subForm).serializeObject();
 		var obj = JSON.stringify(formData);
 		console.log(obj);
