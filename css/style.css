@@ -63,9 +63,10 @@ h4 {
 	height: 100%;
 	margin: 0;
 	padding: 0;
-	margin-top: -1.5em;
+	margin-top: -1.07em;
 	background-color: #e7e4e7;
 	font-weight: bold;
+	font-size:1.25em;
 	clear:right; 
 }
 
@@ -141,6 +142,7 @@ input#search {
 
 #m-item1 {
 	color: #5C2965;
+	
 	
 	
 }
@@ -656,6 +658,7 @@ textarea {
   	padding-left: 15px;
   	/* margin-right: auto; */
   	margin-left: 12.5em;
+	margin-right: 0; 
 }
 
 .container-fluid {
