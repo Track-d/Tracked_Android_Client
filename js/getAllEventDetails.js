@@ -112,9 +112,9 @@
 				console.log("1");
 				console.log(Evts.getData());
 				Evts.getData().then(function(promise) {
-		     		events = processEventInfo(promise.data.events);
+		     		$scope.events = processEventInfo(promise.data.events);
 		     		
-    				$scope.item = events;
+    				$scope.item = $scope.events;
     				function chunk(arr, size) {
 						var newArr = [];
 						for (var i=0; i<arr.length; i+=size) {
@@ -122,7 +122,7 @@
 						}
 						return newArr;
 					}
-    				$scope.chunkedData = chunk(events, 4);
+    				$scope.chunkedData = chunk($scope.events, 4);
   				});		   	 
 		});
 		
@@ -236,8 +236,8 @@
 			});
 
 			//url for events json
-			// var eventsUrl = 'https://trackd.info/events';
-			var eventsUrl = 'eventsUpdate.json';
+			 var eventsUrl = 'https://trackd.info/events';
+			//var eventsUrl = 'eventsUpdate.json';
 
 			//current events dataset
 			var displayEvents; 
