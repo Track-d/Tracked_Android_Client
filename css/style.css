@@ -222,6 +222,7 @@ nav#sidebar-nav {
 		overflow:auto;		
 	}
 	*/
+
 .navbar-toggle .icon-bar {
   display: block;
   width: 25px;
@@ -694,7 +695,7 @@ textarea#event_desc_short.form-control {
 	position:inherit;
 }
 .container-support{
-margin-left:20%;
+margin-left:18%;
 }
 
 #support-email {
