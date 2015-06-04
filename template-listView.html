@@ -7,15 +7,17 @@
 	</div>
 	<div ng-controller="MainControl">
 	<div class="container" id="ng-app" ng-app="myApp" ng-controller="EventsCtrlAjax">
-		<div class="row" >
-			<div class="col-md-3" ng-repeat="val in events">
-				<div class="event-display" >
+
+		<h1>What's Happening Around You</h1>
+		<div id="wrapper" >
+			<div id="columns" >
+				<div class="pin" ng-repeat="val in events">
 					<a href="#"><img class="event-img" src="img/act.jpg" alt="Asians Collaborating Together Conference"/></a>
 		  			 	<a href="" ui-sref="oneEvent" ng-click="getOneEvent(val.e_id);"><h5 class="title">{{val.e_name}}</h5></a>
 		  				<p class="day">{{val.e_sTime | date:'EEE, MMM dd, y'}}</p>
 		  				<p class="time">{{val.e_sTime | date:'shortTime'}} - {{val.e_eTime | date:'shortTime'}}</p>
 		  				<p class="place">{{val.loc_info.name}}</p>
-		  				<p class="hosted-by">Hosted by: <span class="host">Asian Coalition for Equality</span></p> 
+		  				<p class="hosted-by">Hosted by: <span class="host">{{val.org}}</span></p> 
 	  			</div>
 			</div>
 		</div>
