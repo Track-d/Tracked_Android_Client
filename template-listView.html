@@ -1,0 +1,31 @@
+<html>
+<head>
+	<title></title>
+</head>
+<body>
+<div class="row">
+	</div>
+	<div ng-controller="MainControl">
+	<div class="container" id="ng-app" ng-app="myApp" ng-controller="EventsCtrlAjax">
+		<h1>What's Happening Around You</h1>
+		<div id="wrapper" >
+			<div id="columns" >
+				<div class="pin" ng-repeat="val in events">
+					<a href="#" ui-sref="oneEvent({eventId:val.e_id})"><img class="event-img" src="{{val.img}}" alt="{{val.e_name}}"/></a>
+		  			 	<a href="" ui-sref="oneEvent({eventId:val.e_id})" ng-click="getOneEvent(val.e_id);"><h5 class="title">{{val.e_name}}</h5></a>
+		  				<p class="day">{{val.e_sTime | date:'EEE, MMM dd, y'}}</p>
+		  				<p class="time">{{val.e_sTime | date:'shortTime'}} - {{val.e_eTime | date:'shortTime'}}</p>
+		  				<p class="place">{{val.loc_info.name}}</p>
+		  				<p class="hosted-by">Hosted by: <span class="host">{{val.org}}</span></p> 
+	  			</div>
+			</div>
+		</div>
+		<center><div id="no-event"><h4>No more to display</h4></div></center>
+	</div>
+	</div>
+	
+
+	<form action="mapView.html">
+	<!--<button type="submit" class="map-btn">Map View</button></form>-->
+</body>
+</html>
