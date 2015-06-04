@@ -78,7 +78,9 @@
 	  	function processEventInfo(events) {
 	  		var eventsInfo = [];
 	  		var eventIcons = ["img/recreation.png", "img/place.png", "img/rso.png", 
-										"img/sport.png", "img/general.png"];
+								"img/sport.png", "img/general.png", "img/building.png", 
+								"img/campus.png", "img/ducks.png", "img/study.png",
+								"img/location.png"];
 		        	for(item in events) {
 			   			var temp = events[item];
 						var now = new Date();
@@ -99,7 +101,7 @@
 					   			temp.event_desc_short,
 					   			temp.event_desc_long,
 					   			temp.org_name,
-					   			eventIcons[(((temp.event_id * 7235733333333333) * 15485863) % eventIcons.length)]
+					   			eventIcons[(((temp.event_id * 7235733333333333)) % eventIcons.length)]
 				   			)
 			   			);			   		
 			   		}

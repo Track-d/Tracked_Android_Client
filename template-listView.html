@@ -13,7 +13,6 @@
 				<div class="pin" ng-repeat="val in events">
 					<a href="#" ui-sref="oneEvent({eventId:val.e_id})"><img class="event-img" src="{{val.img}}" alt="{{val.e_name}}"/></a>
 		  			 	<a href="" ui-sref="oneEvent({eventId:val.e_id})" ng-click="getOneEvent(val.e_id);"><h5 class="title">{{val.e_name}}</h5></a>
-
 		  				<p class="day">{{val.e_sTime | date:'EEE, MMM dd, y'}}</p>
 		  				<p class="time">{{val.e_sTime | date:'shortTime'}} - {{val.e_eTime | date:'shortTime'}}</p>
 		  				<p class="place">{{val.loc_info.name}}</p>
