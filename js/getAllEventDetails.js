@@ -41,8 +41,8 @@
 					console.log("in getdata");
 
 			 		//var JSON;
-			 		var promise = $http({method: 'GET', url: 'eventsUpdate.json'})
-					//$http.get('https://trackd.info/events').
+			 		// var promise = $http({method: 'GET', url: 'eventsUpdate.json'})
+			 		var promise = $http({method: 'GET', url: 'https://trackd.info/events'})
 				    	.success(function(data, status, headers, config) {
 				     		return data;
 					   	
