@@ -175,311 +175,332 @@
 		   			}
 		   		}
 		   	}
-			// setting selected event
-			var map = map || {};
-			//gov.usgs = gov.usgs || {};
-			var markersArray = [];
-			var markerCluster=[];
-			var timeStartDefault= 8;
-			var timeEndDefault =20;
-			var events;
-			var initialLocation;
-			var uw = new google.maps.LatLng(47.6561432, -122.3062688);
+var map = map || {};
+//gov.usgs = gov.usgs || {};
+var markersArray = [];
+var markerCluster=[];
+var timeStartDefault= 8;
+var timeEndDefault =20;
+var events;
+var initialLocation;
+var uw = new google.maps.LatLng(47.6561432, -122.3062688);
 
-			function initialize() {
-			  $("#nav_bar").load("nav.html"); 
-			  var mapOptions = {
-				scaleControl:true,
-			    zoom: 16
-			  };
-			  map = new google.maps.Map($('.map-container')[0],
-			      mapOptions);
+MarkerClusterer.prototype.onClick = function() { 
+    return true; 
+};
+function initialize() {
+  $("#nav_bar").load("nav.html"); 
+  var mapOptions = {
+	scaleControl:true,
+    zoom: 16
+  };
+  map = new google.maps.Map($('.map-container')[0],
+      mapOptions);
 
-			  // Try HTML5 geolocation
-			 // if(navigator.geolocation) {
-			  //  navigator.geolocation.getCurrentPosition(function(position) {
-			  //    var pos = new google.maps.LatLng(position.coords.latitude,
-			  //                                     position.coords.longitude);
+  // Try HTML5 geolocation
+ // if(navigator.geolocation) {
+  //  navigator.geolocation.getCurrentPosition(function(position) {
+  //    var pos = new google.maps.LatLng(position.coords.latitude,
+  //                                     position.coords.longitude);
 
-			      map.setCenter(uw);
-			  //  }, function() {
-			  //    handleNoGeolocation(true);
-			  //  });
-			//  } else {
-			    // Browser doesn't support Geolocation
-			  //  handleNoGeolocation(false);
-			 // }
-			}
+      map.setCenter(uw);
+	 
+	 //markerCluster = new MarkerClusterer(map, markers);
+// onClickZoom OVERRIDE
+		//markerCluster.onClickZoom = function() { return multiChoice(markerCluster); }
+		
+  //  }, function() {
+  //    handleNoGeolocation(true);
+  //  });
+//  } else {
+    // Browser doesn't support Geolocation
+  //  handleNoGeolocation(false);
+ // }
+}
 
-			function handleNoGeolocation(errorFlag) {
-			  if (errorFlag) {
-			    var content = 'You denied geolocation!';
-			  } else {
-			    var content = 'Error: Your browser doesn\'t support geolocation.';
-			  }
+/*function handleNoGeolocation(errorFlag) {
+  if (errorFlag) {
+    var content = 'You denied geolocation!';
+  } else {
+    var content = 'Error: Your browser doesn\'t support geolocation.';
+  }
 
-			  var options = {
-			    map: map,
-			    scaleControl:true,
-			    zoom: 15,
-			    content: content
-			  };
+  var options = {
+    map: map,
+    scaleControl:true,
+    zoom: 15,
+    content: content
+  };
 
-			  var infowindow = new google.maps.InfoWindow(options);
-				map.setCenter(uw);
-			}
-			  google.maps.event.addDomListener(window, 'load', initialize);
-			  google.maps.event.addDomListener(window, "resize", function() {
-				var center = map.getCenter();
-				google.maps.event.trigger(map, "resize");
-				map.setCenter(center); 
-			});
+  var infowindow = new google.maps.InfoWindow(options);
+	map.setCenter(uw);
+}*/
+  google.maps.event.addDomListener(window, 'load', initialize);
+  google.maps.event.addDomListener(window, "resize", function() {
+	var center = map.getCenter();
+	google.maps.event.trigger(map, "resize");
+	map.setCenter(center); 
+});
 
-			//url for events json
-			 var eventsUrl = 'https://trackd.info/events';
-			//var eventsUrl = 'eventsUpdate.json';
+//url for events json
 
-			//current events dataset
-			var displayEvents; 
+//var eventsUrl = 'eventsUpdate.json';
 
-			//AJAX Error event handler
-			//just alerts the user of the error
-			$(document).ajaxError(function(event, jqXHR, err){
-			   // alert('Problem obtaining data: ' + jqXHR.statusText);
-			})
+var eventsUrl = "https://trackd.info/events_today"
 
-			window.onload = function getEvents() {
-			console.log("try to get events"); 
-				 $.ajax({
-						type: 'GET',
-						url: eventsUrl,
-						cache: false,
-			            crossDomain: true,
-						async:false,
-						headers: {          
-			             Accept : "application/json; charset=utf-8",         
-			           
-						}, 
-						success: function (data) {
-								console.log("success getting data");
-								console.log(data);
-								console.log(data.events.length);
-								console.log(data.events); 
-								//var obj = jQuery.parseJSON(events); // convert the received response to a JSON object
-								//var obj = JSON.stringify(events); 
-								events = data.events; 
-								parseEvents(data.events);
-								
-						},
-						//jsonpCallback: "parseEvents",
-			           // success: function(events){
-							//$('.message').html('Loading... <img src="img/loading.gif">');
-						//	displayEvents = events;
-						//	$('.message').html('Displaying ' + events.length + ' events'); 
-						//	addEventMarkers(events,map);
-						//	}, 
-			            error: function (xhr, status, error) {
-			              console.log("error");
-			            }
-			        });	
-			}
 
-			function parseEvents(events){
+//current events dataset
+var displayEvents; 
+
+//AJAX Error event handler
+//just alerts the user of the error
+$(document).ajaxError(function(event, jqXHR, err){
+   // alert('Problem obtaining data: ' + jqXHR.statusText);
+})
+
+window.onload = function getEvents() {
+console.log("try to get events"); 
+	 $.ajax({
+			type: 'GET',
+			url: eventsUrl,
+			cache: false,
+            crossDomain: true,
+			async:false,
+			headers: {          
+             Accept : "application/json; charset=utf-8",         
+           
+			}, 
+			success: function (data) {
+					console.log("success getting data");
+					console.log(data);
+					//console.log(data.events.length);
+					//console.log(data.events); 
+					//var obj = jQuery.parseJSON(events); // convert the received response to a JSON object
+					//var obj = JSON.stringify(events); 
+					events = data.events; 
+					parseEvents(data.events);
 					
-					//if (events.Success) {
-						//alert(eventsObj.events.event_name);
-						
-						//displayEvents = jsonObj;
+			},
+            error: function (xhr, status, error) {
+              console.log("error");
+            }
+        });	
+}
+
+function parseEvents(events){
+		
+		//if (events.Success) {
+			//alert(eventsObj.events.event_name);
+			
+			//displayEvents = jsonObj;
 				$('.message').html('Displaying ' +events.length + ' events'); 
 				addEventMarkers(events,map,timeStartDefault,timeEndDefault);
-					//} else {
-					//	console.log("damnit");
-					//	alert(events.details);
-					//}
-			            
-							
-			}
+		//} else {
+		//	console.log("damnit");
+		//	alert(events.details);
+		//}
+            
+				
+}
 
-
-			function addEventMarkers(events, map, startTime,endTime) {
-				markersArray =[];
-				var event; //current event data
-				var idx;	//loop counter
-				var infoWindow; //InfoWindow for Event
-				var eventStart;
-				var eventEnd;
-				var start;
-				var end;
-				var start_utc;
-				var end_utc;
-				var now; 
-				for(idx = 0; idx < events.length; ++idx) {
-					e = events[idx];
-				    now = new Date();
-					start_utc = new Date(e.start_time);
-					end_utc = new Date(e.end_time);
-					start = new Date(start_utc.getTime() + (now.getTimezoneOffset()* 60000));
-					end = new Date (end_utc.getTime() + (now.getTimezoneOffset()* 60000));
-					console.log("Date : " + start)	; 
-					sTime = start.getHours();
-					eTime = end.getHours();
-					console.log("Original: " +new Date(e.start_time));
-					//console.log("S time : " + sTime);
-				var myIcon = new google.maps.MarkerImage("img/marker30-01.png", null, null, null, new google.maps.Size(22,31));
-					if(e.loc_info){
-						if(sTime >= startTime && eTime <= endTime){
-							
-							e.mapMarker = new google.maps.Marker({
-							map: map,
-							icon: myIcon,
-							position: new google.maps.LatLng(e.loc_info.lat, e.loc_info.long)
-							
+var infoWindow; //InfoWindow for Event
+function addEventMarkers(events, map, startTime,endTime) {
+	markersArray =[];
+	var event; //current event data
+	var idx;	//loop counter
+	
+	var eventStart;
+	var eventEnd;
+	var start;
+	var end;
+	var start_utc;
+	var end_utc;
+	var now; 
+	for(idx = 0; idx < events.length; ++idx) {
+		e = events[idx];
+	    now = new Date();
+		start_utc = new Date(e.start_time);
+		end_utc = new Date(e.end_time);
+		start = new Date(start_utc.getTime() + (now.getTimezoneOffset()* 60000));
+		end = new Date (end_utc.getTime() + (now.getTimezoneOffset()* 60000));
+		//console.log("Date : " + start)	; 
+		sTime = start.getHours();
+		eTime = end.getHours();
+		var min = .999999;
+		var max = 1.000001;
+	var myIcon = new google.maps.MarkerImage("img/marker30-01.png", null, null, null, new google.maps.Size(22,31));
+		if(e.loc_info){
+			var myLatLng = new google.maps.LatLng(e.loc_info.lat, e.loc_info.long);
+			var newLat = e.loc_info.lat;
+			var newLng = e.loc_info.long;
+			// check if this position has already had a marker
+			if(sTime >= startTime && eTime <= endTime){
+				//console.log("size of markers array: "+ markersArray.length);
+				for(var x = 0; x < markersArray.length; ++x) {
+					//var o = infoWindow.getContent(markersArray[x]);
 					
-							});
+					if ( markersArray[x].getPosition().equals(myLatLng)) {
+						newLat = e.loc_info.lat * (Math.random() * (max - min) + min);
+						newLng = e.loc_info.long * (Math.random() * (max - min) + min);
 
-							var eventView = "/#/event/" + e.event_id;
-
-							infoWindow = new google.maps.InfoWindow({
-							content: '<a href="' + eventView + '">' +
-								 e.event_name +'</a></br><div id="shortDescr">'+
-								 e.event_desc_short +'</div>'
-
-							// content: '<a class="marker" id=' + e.event_id + '>' +
-							// 	 e.event_name +'</a></br><div id="shortDescr">'+
-							// 	 e.event_desc_short +'</div>'
-							});
-							registerInfoWindow(map, e.mapMarker, infoWindow);
-							markersArray.push(e.mapMarker);
-							$scope.$apply(function(){
-							    // perform any model changes or method invocations here on angular app.
-							    var markers = document.getElementsByClassName("marker");
-								for(var j = 0; j < markers.length; j++) {
-									alert(markers[j]);
-								}
-								$scope.item = Evts.item;	
-							});
-						}
-						
+					//	console.log("index of same position: "+ x);
+					//	console.log(myLatLng);
+					//	console.log("Already there event in array: " + markersArray[x].getTitle());
+					//	console.log(e.event_name);		
 					}
-					
 				}
 				
-				mcOptions = {styles: [{
-					height: 53,
-					url: "http://google-maps-utility-library-v3.googlecode.com/svn/trunk/markerclusterer/images/m1.png",
-					width: 53
-					},
-					{
-					height: 56,
-					url: "http://google-maps-utility-library-v3.googlecode.com/svn/trunk/markerclusterer/images/m2.png",
-					width: 56
-					},
-					{
-					height: 66,
-					url: "http://google-maps-utility-library-v3.googlecode.com/svn/trunk/markerclusterer/images/m3.png",
-					width: 66
-					},
-					{
-					height: 78,
-					url: "http://google-maps-utility-library-v3.googlecode.com/svn/trunk/markerclusterer/images/m4.png",
-					width: 78
-					},
-					{
-					height: 90,
-					url: "http://google-maps-utility-library-v3.googlecode.com/svn/trunk/markerclusterer/images/m5.png",
-					width: 90
-					}]}
-				 markerCluster = new MarkerClusterer(map, markersArray,mcOptions);
-			}
-
-			function clearAllMarkers(){
-				for (var i = 0; i < markersArray.length; i++ ) {
-			    markersArray[i].setMap(null);
-				}
-				markersArray.length = 0;
-				markerCluster.resetViewport();
-			}
-			function registerInfoWindow(map, marker, infoWindow) {
-				var iw = infoWindow; 
-				
-				//google.maps.event.addListener(marker, 'mouseover', function() {
-				// if(iw){
-				//	 iw.close; 
-				//	}
-				//	iw = infoWindow;
-				//	infoWindow.open(map, marker);
-					
-				//});
-
-				//google.maps.event.addListener(marker, 'mouseout', function() {
-			    //console.log("hello")
-			    //iw.close();
-				//});
-				 
-				 google.maps.event.addListener(marker, 'click', function(){
-					if(iw){
-					 iw.close; 
-					}
-					iw = infoWindow;
-					infoWindow.open(map, marker);
+				var eventView = "/#/event/" + e.event_id;
+				infoWindow = new google.maps.InfoWindow({
+							content: '<a href="' + eventView + '">'+
+							 e.event_name +'</a></br><div id="shortDescr">'+
+							 e.event_desc_short +'</div>'
+				});
+				e.mapMarker = new google.maps.Marker({
+				map: map,
+				icon: myIcon,
+				position: new google.maps.LatLng(newLat, newLng),
+				title: e.event_name,
+				e_id: e.event_id,
+				shortDescr: e.event_desc_short,
 				});
 				
-				
+				//console.log(e.event_name);
+				//console.log(start);
+				//console.log(end);
+				registerInfoWindow(map, e.mapMarker, infoWindow);
+				markersArray.push(e.mapMarker);
 			}
+			
+		}
+		
+	}
+	
+	mcOptions = {
+		maxZoom: 19,
+		gridSize:40,
+		styles: [{
+		height: 53,
+		url: "img/marker_sm.png",
+		width: 53
+		},
+		{
+		height: 56,
+		url: "img/marker_sm.png",
+		width: 56
+		},
+		{
+		height: 66,
+		url: "img/marker_sm.png",
+		width: 66
+		},
+		{
+		height: 78,
+		url: "img/marker_big.png",
+		width: 78
+		},
+		{
+		height: 90,
+		url: "img/marker_big.png",
+		width: 90
+		}]}
+		
 
-			 
-			 // With JQuery
-			 console.log($);
-				var time = ["12AM","6AM","10AM","2PM","6PM","10PM"];
-				var startTime;
-				var endTime;
-			   $(function() {
-					$("#slider").noUiSlider({
-						handles: 2,
-						   connect: true,
-						   start:[480,1200],
-						   step:5,
-						   range: {
-							'min': 0,
-							'max': 1439
-							}
-					}).on('slide', function(evt,val){
-						//$( "#amount" ).val( "$" + ui.values[ 0 ] + " - $" + ui.values[ 1 ] );	
-						var val0 =val[ 0 ];
-						var	val1 =val[ 1 ]; 
-						var	minutes0 = parseInt(val0 % 60, 10);			
-						var	hours0 = parseInt(val0 / 60 % 24, 10);
-						var	minutes1 = parseInt(val1 % 60, 10);
-						var	hours1 = parseInt(val1 / 60 % 24, 10);
-						startTime = getTime(hours0, minutes0);
-						endTime = getTime(hours1, minutes1);
-						//console.log(startTime);
-						//console.log(endTime);
-						$("#time").text(startTime + ' - ' + endTime);
-						clearAllMarkers();
-						addEventMarkers(events, map, hours0,hours1);
-					});
-				});
-				
-				function getTime(hours, minutes) {
-			    var time = null;
-			    var minutes = minutes + "";
-				
-				if (hours < 12) {
-					time = "AM";
-				} else { 
-					time = "PM";
+	 markerCluster = new MarkerClusterer(map, markersArray,mcOptions);	
+	
+};
+
+function registerInfoWindow(map, marker, infoWindow) {
+	
+	var iw = infoWindow; 
+	
+	//google.maps.event.addListener(marker, 'mouseover', function() {
+	// if(iw){
+	//	 iw.close; 
+	//	}
+	//	iw = infoWindow;
+	//	infoWindow.open(map, marker);
+		
+	//});
+
+	//google.maps.event.addListener(marker, 'mouseout', function() {
+    //console.log("hello")
+    //iw.close();
+	//});
+	
+	 google.maps.event.addListener(marker, 'click', function(){
+		if(iw){
+		 iw.close; 
+		}
+		iw = infoWindow;
+		infoWindow.open(map, marker);
+	});
+	
+	
+	
+}
+
+
+function clearAllMarkers(){
+	for (var i = 0; i < markersArray.length; i++ ) {
+    markersArray[i].setMap(null);
+	}
+	markerCluster.clearMarkers();
+	markersArray.length = 0;
+	
+}
+ 
+ // With JQuery
+	var time = ["12AM","6AM","10AM","2PM","6PM","10PM"];
+	var startTime;
+	var endTime;
+   $(function() {
+		$("#slider").noUiSlider({
+			handles: 2,
+			   connect: true,
+			   start:[480,1200],
+			   step:5,
+			   range: {
+				'min': 0,
+				'max': 1439
 				}
-			    if (hours == 0) {
-					hours = 12;
-				}
-			    if (hours > 12) {
-					hours = hours - 12; 
-				}
-			    if (minutes.length == 1) {
-					minutes = "0" + minutes;
-				}
-				console.log(hours + ":" + minutes + " " + time);
-			    return (hours + ":" + minutes + " " + time);
-				}
+		}).on('slide', function(evt,val){
+			//$( "#amount" ).val( "$" + ui.values[ 0 ] + " - $" + ui.values[ 1 ] );	
+			var val0 =val[ 0 ];
+			var	val1 =val[ 1 ]; 
+			var	minutes0 = parseInt(val0 % 60, 10);			
+			var	hours0 = parseInt(val0 / 60 % 24, 10);
+			var	minutes1 = parseInt(val1 % 60, 10);
+			var	hours1 = parseInt(val1 / 60 % 24, 10);
+			startTime = getTime(hours0, minutes0);
+			endTime = getTime(hours1, minutes1);
+			//console.log(startTime);
+			//console.log(endTime);
+			$("#time").text(startTime + ' - ' + endTime);
+			clearAllMarkers();
+			addEventMarkers(events, map, hours0,hours1);
+		});
+	})( jQuery );
+	
+	function getTime(hours, minutes) {
+    var time = null;
+    var minutes = minutes + "";
+	
+	if (hours < 12) {
+		time = "AM";
+	} else { 
+		time = "PM";
+	}
+    if (hours == 0) {
+		hours = 12;
+	}
+    if (hours > 12) {
+		hours = hours - 12; 
+	}
+    if (minutes.length == 1) {
+		minutes = "0" + minutes;
+	}
+	console.log(hours + ":" + minutes + " " + time);
+    return (hours + ":" + minutes + " " + time);
+	}
 });

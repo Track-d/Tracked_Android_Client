@@ -34,143 +34,146 @@
   <body>
 
   	<div id="nav_bar"></div>
+	<div id="main">
   	<div id="left_sidebar"></div>
-	<div class="submission_form">
+		<div class="submission_form">
+		<div id="sub_container" class = "container">
 			<div id="filter">	
-			<h4>Add New</h4>
-			<form class="form-inline" id = "subForm">
-			  <div class="form-group">
-			    <input  class="form-control" id="name" placeholder=" * Name" name="event_name" > 
-				<div class="error_label"></div>
-				<!-- <label class="sr-only" for="exampleInputEmail3">Name</label>
-			    <input type="email" class="form-control" id="exampleInputEmail3" placeholder="Name">-->
-			  </div>
-			  <div class="form-group">
-				 <input class="form-control" id="fbLink" placeholder="Facebook Export Link">
-				 <div class="error_label"></div>
-			   <!-- <label class="sr-only" for="exampleInputPassword3">Facebook Export Link</label>
-			    <input type="password" class="form-control" id="exampleInputPassword3" placeholder="Facebook Export Link">-->
-			  </div>
-			  <div class = "container">
-			  <label id="filter-event"><input id="event" type="radio" name="optradio" checked="checked" onclick="selectEvent()"> Event </label>
-				<label id="filter-place"><input id="place" type="radio" name="optradio" onclick="selectPlace()"> Place </label>
+				<h4>Add New</h4>
+				<form class="form-inline" id = "subForm" action="#">
+				  <div class="form-group">
+					<input  class="form-control" id="name" placeholder=" * Name" name="event_name" > 
+					<div class="error_label"></div>
+					<!-- <label class="sr-only" for="exampleInputEmail3">Name</label>
+					<input type="email" class="form-control" id="exampleInputEmail3" placeholder="Name">-->
+				  </div>
+				  <div class="form-group">
+					 <input class="form-control" id="fbLink" placeholder="Facebook Export Link">
+					 <div class="error_label"></div>
+					 
+				   <!-- <label class="sr-only" for="exampleInputPassword3">Facebook Export Link</label>
+					<input type="password" class="form-control" id="exampleInputPassword3" placeholder="Facebook Export Link">-->
+				  </div>
+				  </br>
+				  <label id="filter-event"><input id="event" type="radio" name="optradio" checked="checked" onclick="selectEvent()"> Event </label>
+					<label id="filter-place"><input id="place" type="radio" name="optradio" onclick="selectPlace()"> Place </label>
+					
+					<div class="error_label"></div>
+					<div class="form-group">
+				   <!-- <label class="sr-only" for="exampleInputEmail3">Name</label>
+					<input type="email" class="form-control" id="exampleInputEmail3" placeholder="Date">-->
+					<input  class="form-control" id="org_name" name="org_name" placeholder=" * Organization Name" ></input> 
+					<div class="error_label"></div>
+					<input class="form-control" id="date" name="date" placeholder=" * Date: mm/dd/yyyy"></input>
+					<div class="error_label"></div>
+				  </div>
+				  <div class="form-group">
+				   <!-- <label class="sr-only" for="exampleInputPassword3">Facebook Export Link</label>
+					<input type="password" class="form-control" id="exampleInputPassword3" placeholder="Time">-->
+					<input class="form-control" id="s_time" name="s_time" placeholder=" * Start Time: hh:mm AM/PM">
+					<div class="error_label"></div>
+					<input class="form-control" id="e_time" name="e_time" placeholder="* End Time: hh:mm AM/PM">
+					<div class="error_label"></div>
+					
 				</div>
-				<div class="error_label"></div>
+				</br>
 				<div class="form-group">
-			   <!-- <label class="sr-only" for="exampleInputEmail3">Name</label>
-			    <input type="email" class="form-control" id="exampleInputEmail3" placeholder="Date">-->
-				<input  class="form-control" id="org_name" name="org_name" placeholder=" * Organization Name" ></input> 
-				<div class="error_label"></div>
-				<input class="form-control" id="date" name="date" placeholder=" * Date: mm/dd/yyyy"></input>
-				<div class="error_label"></div>
-			  </div>
-			  <div class="form-group">
-			   <!-- <label class="sr-only" for="exampleInputPassword3">Facebook Export Link</label>
-			    <input type="password" class="form-control" id="exampleInputPassword3" placeholder="Time">-->
-				<input class="form-control" id="s_time" name="s_time" placeholder=" * Start Time: hh:mm AM/PM">
-				<div class="error_label"></div>
-				<input class="form-control" id="e_time" name="e_time" placeholder="* End Time: hh:mm AM/PM">
-				<div class="error_label"></div>
-				
-			</div>
-			</br>
-			<div class="form-group">
-				<input class="form-control" type="text" id="room" name="room" placeholder="room #"></input>
-				<input class="form-control"type="text" id="location" name="location" placeholder=" * Location "></input>		
-				<div class="error_label"></div>
-			</div>
-			  <textarea class="form-control" rows="5" id = "event_desc_short" name="event_desc_short" placeholder="Tagline: (5-10 words)"></textarea>
-			  <div class="error_label"></div>
-			  <textarea class="form-control" rows="100" id="event_desc_long" placeholder=" * Description"></textarea>
-			  <div class="error_label"></div>
-			   <div class="form-group">
-			   <!-- <label class="sr-only" for="exampleInputPassword3">Facebook Export Link</label>
-			    <input type="password" class="form-control" id="exampleInputPassword3" placeholder="Location">-->
-			  </div>
-			  	<!--<<button id = "repeat" type ="button" onclick ="addImage()">x Repeat</button>
-			  	<button id = "addImage" type ="button" onclick ="addImage()">+ Add Image</button>
+					<input class="form-control" type="text" id="room" name="room" placeholder="room #"></input>
+					<input class="form-control"type="text" id="location" name="location" placeholder=" * Location "></input>		
+					<div class="error_label"></div>
 				</div>
-				<div class="form-group">
-					<div id="week">	
-						<button type ="button" id="week-m" class ="btn-week" onclick="activateItem(this); return false;">Mon</button>
-						<button type ="button" id="week-t"class ="btn-week">Tue</button>
-						<button type ="button" id="week-w" class ="btn-week">Wed</button>
-						<button type ="button" id="week-th" class ="btn-week">Thur</button>
-						<button type ="button" id="week-f" class ="btn-week">Fri</button>
-						<button type ="button" id="week-s" class ="btn-week">Sat</button>
-						<button type ="button" id="week-su"class ="btn-week">Sun</button>
+				  <textarea class="form-control" rows="5" id = "event_desc_short" name="event_desc_short" placeholder="Tagline: (5-10 words)"></textarea>
+				  <div class="error_label"></div>
+				  <textarea class="form-control" rows="100" name="event_desc_long" placeholder=" * Description"></textarea>
+				  <div class="error_label"></div>
+				   <div class="form-group">
+				   <!-- <label class="sr-only" for="exampleInputPassword3">Facebook Export Link</label>
+					<input type="password" class="form-control" id="exampleInputPassword3" placeholder="Location">-->
+				  </div>
+					<!--<<button id = "repeat" type ="button" onclick ="addImage()">x Repeat</button>
+					<button id = "addImage" type ="button" onclick ="addImage()">+ Add Image</button>
 					</div>
+					<div class="form-group">
+						<div id="week">	
+							<button type ="button" id="week-m" class ="btn-week" onclick="activateItem(this); return false;">Mon</button>
+							<button type ="button" id="week-t"class ="btn-week">Tue</button>
+							<button type ="button" id="week-w" class ="btn-week">Wed</button>
+							<button type ="button" id="week-th" class ="btn-week">Thur</button>
+							<button type ="button" id="week-f" class ="btn-week">Fri</button>
+							<button type ="button" id="week-s" class ="btn-week">Sat</button>
+							<button type ="button" id="week-su"class ="btn-week">Sun</button>
+						</div>
 
-				</div>-->
-				<input type="hidden" id="lat" name="lat" />
-				<input type="hidden" id="long" name="long" />
-				<input type="hidden" id="start_time" name="start_time" />
-				<input type="hidden" id="end_time" name="end_time" />
-				</br>	
-				<Button class="sub-btn" type="submit" id="submit" onclick="submitForm();">Post</Button>
-				<Button id = "cancel" type ="button" onclick ="location.href='http://trackd.info/index.html'">Cancel</Button>
-			</dib>
-
-				
-
-			
-			<!--   <div class="checkbox">
-			    <label>
-			      <input type="checkbox"> Remember me
-			    </label>
-			  </div>
-			  <button type="submit" class="btn btn-default">Sign in</button></div>
-			</form>
-			<br>
-            
-            <form >
-            <div class="column">
-				Name:<br>
-				<input type="text" name="name" placeholder ="Name">
-				<br>
-				<label id="filter-event"><input type="radio" name="optradio"> Event </label>
-				<label id="filter-place"><input type="radio" name="optradio"> Place </label>
-				<br>
-				Description:<br>
-				<input type="text" name="description" placeholder ="Description">
-				<br>
-				Host:<br>
-				<input type="text" name="host" placeholder ="Host">
-				<br>
-				Date:<br>
-				<input type="text" name="date" placeholder ="Date">
-				<br>
-				Time:<br>
-				<input type="text" name="time" placeholder ="Time">
-				<br>
-				Location:<br>
-				<input type="text" name="location" placeholder ="Location">
-				<br>
-				Event Link:<br>
-				<input type="text" name="link" placeholder ="Export From Facebook (Event Link)">
-				<br>
-				<br>
-				
-				<button id = "addImage" type ="button" onclick ="addImage()">+ Add Image</button>
-				<div id="week">	
-				<button type ="button" id="week-m" class ="btn-week" onclick="activateItem(this); return false;">Mon</button>
-				<button type ="button" id="week-t"class ="btn-week">Tue</button>
-				<button type ="button" id="week-w" class ="btn-week">Wed</button>
-				<button type ="button" id="week-th" class ="btn-week">Thur</button>
-				<button type ="button" id="week-f" class ="btn-week">Fri</button>
-				<button type ="button" id="week-s" class ="btn-week">Sat</button>
-				<button type ="button" id="week-su"class ="btn-week">Sun</button>
+					</div>-->
+					<input type="hidden" id="lat" name="lat" />
+					<input type="hidden" id="long" name="long" />
+					<input type="hidden" id="start_time" name="start_time" />
+					<input type="hidden" id="end_time" name="end_time" />
+					</br>	
+					<Button class="sub-btn" type="submit" id="submit" onclick="submitForm();">Post</Button>
+					<Button id = "cancel" type ="button" onclick ="location.href='http://trackd.info/index.html'">Cancel</Button>
 				</div>
-				
-				<Button type="submit" id = "submit" formaction="delete.php" formmethod="POST">Post</Button>
-			</div>-->
 			
-			</form>	
+					
 
-		  <!-- our own JavaScript files -->
-        <script type="text/javascript" src="js/newPost.js"></script>
+				
+				<!--   <div class="checkbox">
+					<label>
+					  <input type="checkbox"> Remember me
+					</label>
+				  </div>
+				  <button type="submit" class="btn btn-default">Sign in</button></div>
+				</form>
+				<br>
+				
+				<form >
+				<div class="column">
+					Name:<br>
+					<input type="text" name="name" placeholder ="Name">
+					<br>
+					<label id="filter-event"><input type="radio" name="optradio"> Event </label>
+					<label id="filter-place"><input type="radio" name="optradio"> Place </label>
+					<br>
+					Description:<br>
+					<input type="text" name="description" placeholder ="Description">
+					<br>
+					Host:<br>
+					<input type="text" name="host" placeholder ="Host">
+					<br>
+					Date:<br>
+					<input type="text" name="date" placeholder ="Date">
+					<br>
+					Time:<br>
+					<input type="text" name="time" placeholder ="Time">
+					<br>
+					Location:<br>
+					<input type="text" name="location" placeholder ="Location">
+					<br>
+					Event Link:<br>
+					<input type="text" name="link" placeholder ="Export From Facebook (Event Link)">
+					<br>
+					<br>
+					
+					<button id = "addImage" type ="button" onclick ="addImage()">+ Add Image</button>
+					<div id="week">	
+					<button type ="button" id="week-m" class ="btn-week" onclick="activateItem(this); return false;">Mon</button>
+					<button type ="button" id="week-t"class ="btn-week">Tue</button>
+					<button type ="button" id="week-w" class ="btn-week">Wed</button>
+					<button type ="button" id="week-th" class ="btn-week">Thur</button>
+					<button type ="button" id="week-f" class ="btn-week">Fri</button>
+					<button type ="button" id="week-s" class ="btn-week">Sat</button>
+					<button type ="button" id="week-su"class ="btn-week">Sun</button>
+					</div>
+					
+					<Button type="submit" id = "submit" formaction="delete.php" formmethod="POST">Post</Button>
+				</div>-->
+				
+				</form>	
+		</div>
+			  <!-- our own JavaScript files -->
+			<script type="text/javascript" src="js/newPost.js"></script>
+			</div>
 	
-
 	</div>
 
   </body>

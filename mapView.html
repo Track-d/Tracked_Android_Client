@@ -22,33 +22,20 @@
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap-theme.min.css">
   
 	<script src="https://google-maps-utility-library-v3.googlecode.com/svn/trunk/markerclusterer/src/markerclusterer_compiled.js"></script>
-	
-	
-	<!--jQuery UI Slider - Range slider</title>
-	<link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/ui-lightness/jquery-ui.css">
-	<script src="http://code.jquery.com/ui/1.11.4/jqueryui/1.11.4/jquery-ui.js"></script>
-	<script src = "http://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/jquery-ui.js"></script>
-	<script src ="js/jquery.ui.touch-punch.min.js"></script>-->
-	
-	<!-- Include jQuery Mobile stylesheets 
-	<link rel="stylesheet" href="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css">
-
-	<!- Include the jQuery library
-	<script src="http://code.jquery.com/jquery-1.11.2.min.js"></script>
-
-	<!- Include the jQuery Mobile library 
-	<script src="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
-
-	<!- Latest compiled and minified JavaScript 
-	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>-->
-	<!--<script src="js/ion.rangeSlider.min.js"></script>
-	<link href="css/ion.rangeSlider.skinNice.css" rel="stylesheet" type="text/css">-->
 	<link rel="stylesheet" type="text/css" href="css/style.css">
+
 	<!--<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?v=3&sensor=true&callback=init"></script>-->
 	<!-- Use the 'all' version to get all documented features. -->
     <!-- Includes wNumb, libLink and the pips add-on -->
    <!-- <script src="jquery.nouislider.all.min.js"></script>--> 
 	
+
+	 <script> 
+        $(function(){
+            $("#nav_bar").load("nav.html"); 
+        });
+    </script>
+
   </head>
   	
    <!-- <script src="jquery.nouislider.all.min.js"></script>-->
@@ -78,11 +65,10 @@
 //separate from one another when mixing code from different
 //sources on the same page
 
-	
  </script>
- 	 
 
-   <div class="map-container" style="height:430px"></div>
+   <div ng-app="myApp"  ng-controller="OneEventMap" class="map-container" >
+	</div>
 	<button id = "toListView"  onclick ="location.href='https://trackd.info/index.html'">List View</button>
 	<div class = "time-slider">
 		</br>
