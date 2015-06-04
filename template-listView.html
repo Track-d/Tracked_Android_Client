@@ -10,8 +10,8 @@
 		<div class="row" ng-repeat="events in chunkedData">
 			<div class="col-md-3" ng-repeat="val in events">
 				<div class="event-display" >
-					<a href="#"><img class="event-img" src="img/act.jpg" alt="Asians Collaborating Together Conference"/></a>
-		  			 	<a href="" ui-sref="oneEvent" ng-click="getOneEvent(val.e_id);"><h5 class="title">{{val.e_name}}</h5></a>
+					<a href=""><img class="event-img" src="{{val.img}}" alt="Asians Collaborating Together Conference"/></a>
+		  			 	<a href="" ui-sref="oneEvent({eventId:val.e_id})"><h5 class="title">{{val.e_name}}</h5></a>
 		  				<p class="day">{{val.e_sTime | date:'EEE, MMM dd, y'}}</p>
 		  				<p class="time">{{val.e_sTime | date:'shortTime'}} - {{val.e_eTime | date:'shortTime'}}</p>
 		  				<p class="place">{{val.loc_info.name}}</p>
