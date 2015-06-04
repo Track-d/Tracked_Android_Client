@@ -19,33 +19,20 @@
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap-theme.min.css">
   
 	<script src="https://google-maps-utility-library-v3.googlecode.com/svn/trunk/markerclusterer/src/markerclusterer_compiled.js"></script>
-	
-	
-	<!--jQuery UI Slider - Range slider</title>
-	<link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/ui-lightness/jquery-ui.css">
-	<script src="http://code.jquery.com/ui/1.11.4/jqueryui/1.11.4/jquery-ui.js"></script>
-	<script src = "http://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/jquery-ui.js"></script>
-	<script src ="js/jquery.ui.touch-punch.min.js"></script>-->
-	
-	<!-- Include jQuery Mobile stylesheets 
-	<link rel="stylesheet" href="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css">
-
-	<!- Include the jQuery library
-	<script src="http://code.jquery.com/jquery-1.11.2.min.js"></script>
-
-	<!- Include the jQuery Mobile library 
-	<script src="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
-
-	<!- Latest compiled and minified JavaScript 
-	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>-->
-	<!--<script src="js/ion.rangeSlider.min.js"></script>
-	<link href="css/ion.rangeSlider.skinNice.css" rel="stylesheet" type="text/css">-->
 	<link rel="stylesheet" type="text/css" href="css/style.css">
+
 	<!--<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?v=3&sensor=true&callback=init"></script>-->
 	<!-- Use the 'all' version to get all documented features. -->
     <!-- Includes wNumb, libLink and the pips add-on -->
    <!-- <script src="jquery.nouislider.all.min.js"></script>--> 
 	
+
+	 <script> 
+        $(function(){
+            $("#nav_bar").load("nav.html"); 
+        });
+    </script>
+
   </head>
   	
    <!-- <script src="jquery.nouislider.all.min.js"></script>-->
@@ -85,6 +72,9 @@ var events;
 var initialLocation;
 var uw = new google.maps.LatLng(47.6561432, -122.3062688);
 
+MarkerClusterer.prototype.onClick = function() { 
+    return true; 
+};
 function initialize() {
   $("#nav_bar").load("nav.html"); 
   var mapOptions = {
@@ -101,6 +91,11 @@ function initialize() {
   //                                     position.coords.longitude);
 
       map.setCenter(uw);
+	 
+	 //markerCluster = new MarkerClusterer(map, markers);
+// onClickZoom OVERRIDE
+		//markerCluster.onClickZoom = function() { return multiChoice(markerCluster); }
+		
   //  }, function() {
   //    handleNoGeolocation(true);
   //  });
@@ -110,7 +105,7 @@ function initialize() {
  // }
 }
 
-function handleNoGeolocation(errorFlag) {
+/*function handleNoGeolocation(errorFlag) {
   if (errorFlag) {
     var content = 'You denied geolocation!';
   } else {
@@ -126,7 +121,7 @@ function handleNoGeolocation(errorFlag) {
 
   var infowindow = new google.maps.InfoWindow(options);
 	map.setCenter(uw);
-}
+}*/
   google.maps.event.addDomListener(window, 'load', initialize);
   google.maps.event.addDomListener(window, "resize", function() {
 	var center = map.getCenter();
@@ -135,8 +130,11 @@ function handleNoGeolocation(errorFlag) {
 });
 
 //url for events json
-// var eventsUrl = 'https://trackd.info/events';
-var eventsUrl = 'eventsUpdate.json';
+
+//var eventsUrl = 'eventsUpdate.json';
+
+var eventsUrl = "https://trackd.info/todays_events"
+
 
 //current events dataset
 var displayEvents; 
@@ -162,21 +160,14 @@ console.log("try to get events");
 			success: function (data) {
 					console.log("success getting data");
 					console.log(data);
-					console.log(data.events.length);
-					console.log(data.events); 
+					//console.log(data.events.length);
+					//console.log(data.events); 
 					//var obj = jQuery.parseJSON(events); // convert the received response to a JSON object
 					//var obj = JSON.stringify(events); 
 					events = data.events; 
 					parseEvents(data.events);
 					
 			},
-			//jsonpCallback: "parseEvents",
-           // success: function(events){
-				//$('.message').html('Loading... <img src="img/loading.gif">');
-			//	displayEvents = events;
-			//	$('.message').html('Displaying ' + events.length + ' events'); 
-			//	addEventMarkers(events,map);
-			//	}, 
             error: function (xhr, status, error) {
               console.log("error");
             }
@@ -199,12 +190,12 @@ function parseEvents(events){
 				
 }
 
-
+var infoWindow; //InfoWindow for Event
 function addEventMarkers(events, map, startTime,endTime) {
 	markersArray =[];
 	var event; //current event data
 	var idx;	//loop counter
-	var infoWindow; //InfoWindow for Event
+	
 	var eventStart;
 	var eventEnd;
 	var start;
@@ -219,26 +210,49 @@ function addEventMarkers(events, map, startTime,endTime) {
 		end_utc = new Date(e.end_time);
 		start = new Date(start_utc.getTime() + (now.getTimezoneOffset()* 60000));
 		end = new Date (end_utc.getTime() + (now.getTimezoneOffset()* 60000));
-		console.log("Date : " + start)	; 
+		//console.log("Date : " + start)	; 
 		sTime = start.getHours();
 		eTime = end.getHours();
-		console.log("Original: " +new Date(e.start_time));
-		//console.log("S time : " + sTime);
+		var min = .999999;
+		var max = 1.000001;
 	var myIcon = new google.maps.MarkerImage("img/marker30-01.png", null, null, null, new google.maps.Size(22,31));
 		if(e.loc_info){
+			var myLatLng = new google.maps.LatLng(e.loc_info.lat, e.loc_info.long);
+			var newLat = e.loc_info.lat;
+			var newLng = e.loc_info.long;
+			// check if this position has already had a marker
 			if(sTime >= startTime && eTime <= endTime){
+				console.log("size of markers array: "+ markersArray.length);
+				for(var x = 0; x < markersArray.length; ++x) {
+					//var o = infoWindow.getContent(markersArray[x]);
+					
+					if ( markersArray[x].getPosition().equals(myLatLng)) {
+						newLat = e.loc_info.lat * (Math.random() * (max - min) + min);
+						newLng = e.loc_info.long * (Math.random() * (max - min) + min);
+
+					//	console.log("index of same position: "+ x);
+						console.log(myLatLng);
+						console.log("Already there event in array: " + markersArray[x].getTitle());
+						console.log(e.event_name);		
+					}
+				}
+				infoWindow = new google.maps.InfoWindow({
+							content: '<a href="https://trackd.info/eventView.html">'+
+							 e.event_name +'</a></br><div id="shortDescr">'+
+							 e.event_desc_short +'</div>'
+				});
 				e.mapMarker = new google.maps.Marker({
 				map: map,
 				icon: myIcon,
-				position: new google.maps.LatLng(e.loc_info.lat, e.loc_info.long)
+				position: new google.maps.LatLng(newLat, newLng),
+				title: e.event_name,
+				e_id: e.event_id,
+				shortDescr: e.event_desc_short,
+				});
 				
-		
-				});
-				infoWindow = new google.maps.InfoWindow({
-				content: '<a sref="oneEventMap" ng-click="getOneEvent(e.event_id)";>'+
-					 e.event_name +'</a></br><div id="shortDescr">'+
-					 e.event_desc_short +'</div>'
-				});
+				//console.log(e.event_name);
+				//console.log(start);
+				//console.log(end);
 				registerInfoWindow(map, e.mapMarker, infoWindow);
 				markersArray.push(e.mapMarker);
 			}
@@ -247,7 +261,10 @@ function addEventMarkers(events, map, startTime,endTime) {
 		
 	}
 	
-	mcOptions = {styles: [{
+	mcOptions = {
+		maxZoom: 19,
+		gridSize:40,
+		styles: [{
 		height: 53,
 		url: "img/marker_sm.png",
 		width: 53
@@ -272,17 +289,14 @@ function addEventMarkers(events, map, startTime,endTime) {
 		url: "img/marker_big.png",
 		width: 90
 		}]}
-	 markerCluster = new MarkerClusterer(map, markersArray,mcOptions);
-}
+		
 
-function clearAllMarkers(){
-	for (var i = 0; i < markersArray.length; i++ ) {
-    markersArray[i].setMap(null);
-	}
-	markersArray.length = 0;
-	markerCluster.resetViewport();
-}
+	 markerCluster = new MarkerClusterer(map, markersArray,mcOptions);	
+	
+};
+
 function registerInfoWindow(map, marker, infoWindow) {
+	
 	var iw = infoWindow; 
 	
 	//google.maps.event.addListener(marker, 'mouseover', function() {
@@ -298,7 +312,7 @@ function registerInfoWindow(map, marker, infoWindow) {
     //console.log("hello")
     //iw.close();
 	//});
-	 
+	
 	 google.maps.event.addListener(marker, 'click', function(){
 		if(iw){
 		 iw.close; 
@@ -308,8 +322,18 @@ function registerInfoWindow(map, marker, infoWindow) {
 	});
 	
 	
+	
 }
 
+
+function clearAllMarkers(){
+	for (var i = 0; i < markersArray.length; i++ ) {
+    markersArray[i].setMap(null);
+	}
+	markerCluster.clearMarkers();
+	markersArray.length = 0;
+	
+}
  
  // With JQuery
 	var time = ["12AM","6AM","10AM","2PM","6PM","10PM"];
@@ -366,9 +390,12 @@ function registerInfoWindow(map, marker, infoWindow) {
 	}
 	
  </script>
+
  	 
 
    <div ng-app="myApp"  ng-controller="OneEventMap" class="map-container" style="height:430px">
+
+   <div class="map-container">
 	</div>
 	<button id = "toListView"  onclick ="location.href='https://trackd.info/index.html'">List View</button>
 	<div class = "time-slider">

@@ -168,19 +168,20 @@ function submitForm() {
            cache: false, //This will force requested pages not to be cached by the browser
 		   crossDomain:true,
            success: function (msg) {
-                  alert("Post worked"+ msg);
-				  console.log("Post worked");
-				 // window.location = "http://localhost:9006/TrackdClient/createNew.html";
+                  //alert("Post worked"+ msg);
+				  //console.log("Post worked");
+				  window.location = "http://localhost:9006/TrackdClient/createNew.html";
 				
            },
 		   error: function(request, status, error){
-			   console.log("Post did not work");
-				alert("Post did not work, "+ request +status + error);
-				//window.location = "http://localhost:9006/TrackdClient/createNew.html";
+			   console.log("Post did not work" +error);
+				//alert("Post did not work, "+ request +status + error);
+				
 		   },
            
        });
-	    //self.location = "http://localhost:9006/TrackdClient/createNew.html";
+	    self.location = "http://localhost:9006/TrackdClient/createNew.html";
+		//window.location = "http://localhost:9006/TrackdClient/createNew.html";
 		console.log(formData); 
 	}
 	
