@@ -34,10 +34,25 @@
 				controller: "OneEvent",           
 				templateUrl: "template-eventView.html"
 			})
-		})
-		.service("OneEvt", function OneEvt() {
-			var eventItem = this;
-			eventItem.item = "Default"
+		});
+		myApp.factory("Evts", function Evts($http) {
+			return {
+				getData: function () {
+					console.log("in getdata");
+
+			 		//var JSON;
+			 		var promise = $http({method: 'GET', url: 'eventsUpdate.json'})
+					//$http.get('https://trackd.info/events').
+				    	.success(function(data, status, headers, config) {
+				     		return data;
+					   	
+					   	})
+						.error(function (data, status, headers, config) {
+      						return {"status": false};
+    					});
+    				return promise;
+				}
+		    }
 		});
 
 		// Model for all event objects
@@ -56,84 +71,83 @@
 	  	}
 
 
-		myApp.controller('MainControl', function ($scope, $http, OneEvt) {
+		myApp.controller('MainControl', function ($scope, $http, Evts) {
 	  		// alert("MainControl");
 	  	});
 
-		myApp.controller('EventsCtrlAjax', function ($scope, $http, OneEvt, $state) {
-	 		$scope.events = []
-	 		var eventIcons = ["img/recreation.png", "img/place.png", "img/rso.png", 
-								"img/sport.png", "img/general.png"];
+	  	function processEventInfo(events) {
+	  		var eventsInfo = [];
+	  		var eventIcons = ["img/recreation.png", "img/place.png", "img/rso.png", 
+										"img/sport.png", "img/general.png"];
+		        	for(item in events) {
+			   			var temp = events[item];
+						var now = new Date();
+				   		var start = new Date(new Date(temp.start_time).getTime() + (now.getTimezoneOffset()* 60000));
+						var now = new Date();
+				   		var end = new Date(new Date(temp.end_time).getTime() + (now.getTimezoneOffset()* 60000));
 
+		  				//alert("S: " + start + " E: " + end);
+				   		eventsInfo.push(
+				   			new evnt (
+				   				temp.event_id,
+					   			temp.event_name,
+					   			Date.parse(start),
+					   			Date.parse(end),
+					   			temp.loc_info.location,
+					   			temp.loc_info.lat,
+					   			temp.loc_info.log,
+					   			temp.event_desc_short,
+					   			temp.event_desc_long,
+					   			temp.org_name,
+					   			eventIcons[(((temp.event_id * 7235733333333333) * 15485863) % eventIcons.length)]
+				   			)
+			   			);			   		
+			   		}
+			   		return eventsInfo;			
+	  	}
 
-
-	 		//var JSON;
-	 		$http.get('eventsUpdate.json').
-			//$http.get('https://trackd.info/events').
-		     	success(function(data, status, headers, config) {
-		        for(item in data.events) {
-			   		var temp = data.events[item];
-					var now = new Date();
-			   		var start = new Date(new Date(temp.start_time).getTime() + (now.getTimezoneOffset()* 60000));
-					var now = new Date();
-			   		var end = new Date(new Date(temp.end_time).getTime() + (now.getTimezoneOffset()* 60000));
-
-	  				//alert("S: " + start + " E: " + end);
-			   		$scope.events.push(
-			   			new evnt (
-			   				temp.event_id,
-				   			temp.event_name,
-				   			Date.parse(start),
-				   			Date.parse(end),
-				   			temp.loc_info.location,
-				   			temp.loc_info.lat,
-				   			temp.loc_info.log,
-				   			temp.event_desc_short,
-				   			temp.event_desc_long,
-				   			temp.org_name,
-				   			eventIcons[(((temp.event_id * 7235733333333333) * 15485863) % eventIcons.length)]
-			   			)
-		   			);			   		
-			   	}
-
-			   	OneEvt.item = $scope.events;
-
-			   	function chunk(arr, size) {
-				  var newArr = [];
-				  for (var i=0; i<arr.length; i+=size) {
-				    newArr.push(arr.slice(i, i+size));
-				  }
-				  return newArr;
-				}
-
-				$scope.chunkedData = chunk($scope.events, 4);
-
-			  
-
-			   	// console.log($scope.events);
-			   	
-		 	});	  
-		 });
+		myApp.controller('EventsCtrlAjax', function ($scope, $http, Evts, $state) {
+				console.log("1");
+				console.log(Evts.getData());
+				Evts.getData().then(function(promise) {
+		     		events = processEventInfo(promise.data.events);
+		     		
+    				$scope.item = events;
+    				function chunk(arr, size) {
+						var newArr = [];
+						for (var i=0; i<arr.length; i+=size) {
+							newArr.push(arr.slice(i, i+size));
+						}
+						return newArr;
+					}
+    				$scope.chunkedData = chunk(events, 4);
+  				});		   	 
+		});
 		
-		myApp.controller('OneEvent', function ($scope, OneEvt, $stateParams, $state) {
+		myApp.controller('OneEvent', function ($scope, Evts, $stateParams, $state) {
 
 	 		$scope.item;
 	   		var id;
 	   		console.log($state.params);
 	   		id = $stateParams.eventId;
-	   		//expect($stateParams).toBe({contactId: id});
-	   		var events = OneEvt.item;
-	   		//console.log($stateParams);
-	   		//alert("Getting 1 event id: " + id);
-	   		for(var i = 0; i < events.length; i++) {
-	   			try {
-		   			if (events[i].e_id == id) {
-		   				$scope.item = events[i];
+	   		Evts.getData().then(function(promise) {
+	   			
+	   			var events = processEventInfo(promise.data.events);;
+	   			
+		   		//alert("Getting 1 event id: " + id);
+		   		for(var i = 0; i < events.length; i++) {
+		   			try {
+			   			if (events[i].e_id == id) {
+			   				$scope.item = events[i];
+			   			}
+		   			} catch (error) {
+		   				alert(error);
 		   			}
-	   			} catch (error) {
-	   				alert(error);
-	   			}
-	   		}
+		   		}
+	   		});
+
+	   		//expect($stateParams).toBe({contactId: id});
+	   		
 
 			   	
 			// setting selected event
@@ -144,14 +158,14 @@
 			console.log($stateParams.eventId);
 		});
 
-		myApp.controller('OneEventMap', function ($scope, OneEvt) {
+		myApp.controller('OneEventMap', function ($scope, Evts) {
 
 			$scope.getOneEvent = function(id){
 		   		alert("Getting 1 event");
 		   		for(var i = 0; i < $scope.events.length; i++) {
 		   			try {
 			   			if ($scope.events[i].e_id == id) {
-			   				OneEvt.item = $scope.events[i];
+			   				Evts.item = $scope.events[i];
 			   			}
 		   			} catch (error) {
 		   				alert(error);
@@ -336,7 +350,7 @@
 								for(var j = 0; j < markers.length; j++) {
 									alert(markers[j]);
 								}
-								$scope.item = OneEvt.item;	
+								$scope.item = Evts.item;	
 							});
 						}
 						
