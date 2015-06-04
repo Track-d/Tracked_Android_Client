@@ -158,6 +158,7 @@
 			console.log($stateParams.eventId);
 		});
 
+//************************************************* MAP VIEW *****************************************************************************************************
 		myApp.controller('OneEventMap', function ($scope, Evts) {
 
 			$scope.getOneEvent = function(id){
@@ -333,8 +334,11 @@
 							
 					
 							});
+
+							var eventView = "/#/event/" + e.event_id;
+
 							infoWindow = new google.maps.InfoWindow({
-							content: '<a href="" ui-sref="oneEvent" ng-click="getOneEvent(' + e.event_id + ');">' +
+							content: '<a href="' + eventView + '">' +
 								 e.event_name +'</a></br><div id="shortDescr">'+
 								 e.event_desc_short +'</div>'
 
@@ -476,7 +480,4 @@
 				console.log(hours + ":" + minutes + " " + time);
 			    return (hours + ":" + minutes + " " + time);
 				}
-
-			
-			// alert($scope.item);
 });
