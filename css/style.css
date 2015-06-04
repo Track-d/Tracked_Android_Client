@@ -59,7 +59,7 @@ h4 {
 .sidebar-nav {
 	list-style: none;
 	position: absolute;
-	width: 250px;
+	width: 170px;
 	height: 100%;
 	margin: 0;
 	padding: 0;
@@ -71,7 +71,7 @@ h4 {
 
 .sidebar-nav li {
     text-indent: 20px;
-    line-height: 40px;
+    line-height: 50px;
     border-bottom: solid #575757 .1em;
 }
 
@@ -141,6 +141,8 @@ input#search {
 
 #m-item1 {
 	color: #5C2965;
+	
+	
 }
 
 #m-item2 {
