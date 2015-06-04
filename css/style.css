@@ -601,13 +601,6 @@ textarea {
 	float: center;  
  }
 
-@media screen and (min-width: 1300px) {
-/* styles to apply on very narrow screens */
-	.event-display {
-		display: block;
-	}
-}
-
 .col-md-12 img {
 	max-height:100%; 
 	max-width:100%;
@@ -728,7 +721,7 @@ input#org_name, input#name, input#fbLink, input#room, input#date, input#e_time, 
 	padding-right: 15px;
   padding-left: 15px;
   /* margin-right: auto; */
-  margin-left: 18.5em;
+  margin-left: 12em;
 }
 
 .container-fluid {
@@ -780,7 +773,7 @@ b{
 }
 
 #columns {
-	-webkit-column-count: 3;
+	-webkit-column-count: 4;
 	-webkit-column-gap: 10px;
 	-webkit-column-fill: auto;
 	-moz-column-count: 3;
@@ -802,6 +795,7 @@ b{
 	padding: 15px;
 	padding-bottom: 5px;
 	opacity: 1;
+	margin-bottom: 2em;
 	
 	-webkit-transition: all .2s ease;
 	-moz-transition: all .2s ease;
@@ -824,16 +818,16 @@ b{
 
 @media (min-width: 960px) {
 	#columns {
-		-webkit-column-count: 3;
-		-moz-column-count: 3;
-		column-count: 3;
+		-webkit-column-count: 4;
+		-moz-column-count: 4;
+		column-count: 4;
 	}
 }
 
 @media (min-width: 1100px) {
 	#columns {
 		-webkit-column-count: 4;
-		-moz-column-count: 54;
+		-moz-column-count: 4;
 		column-count: 4;
 	}
 }
@@ -848,4 +842,6 @@ b{
 	margin-left: 0;
 }
 
-
+.ng-scope {
+	margin-top: -1em;
+}
